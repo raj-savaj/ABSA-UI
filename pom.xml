@@ -84,7 +84,7 @@
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>
-				<version>4.1.0</version>
+				<version>3.5.6</version>
 				<executions>
 					<execution>
 						<id>generate-sources</id>
@@ -95,7 +95,7 @@
 						<configuration>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>https://example.com/service1?wsdl</wsdl>
+									<wsdl>https://fcrapi.uiauat.ke.intra.absaafrica/services/services/DemandDepositManagerSpi?wsdl</wsdl>
 									<packagenames>com.acc.soap</packagenames>
 								</wsdlOption>
 								<!-- Add more wsdlOption blocks as needed -->
