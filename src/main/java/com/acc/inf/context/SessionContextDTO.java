@@ -7,18 +7,19 @@ import lombok.Setter;
 @Getter
 public class SessionContextDTO {
     private SupervisorContextDTO supervisorContext;
-    private String bankCode;
-    private String channel;
-    private String externalBatchNumber;
-    private String externalReferenceNo;
-    private String externalSystemAuditTrailNumber;
-    private String localDateTimeText;
-    private String originalReferenceNo;
-    private String overridenWarnings;
-    private String postingDateText;
-    private String serviceCode;
-    private String sessionTicket;
-    private String transactionBranch;
-    private String userId;
-    private String valueDateText;
+    protected int bankCode;
+    protected String channel;
+    protected long externalBatchNumber;
+    protected String externalReferenceNo;
+    protected long externalSystemAuditTrailNumber;
+    protected String localDateTimeText;
+    protected String originalReferenceNo;
+    protected String overridenWarnings;
+    protected String postingDateText;
+    protected String serviceCode;
+    protected String sessionTicket;
+    protected int transactionBranch;
+    protected String userId;
+    protected String userReferenceNumber;
+    protected String valueDateText;
 }

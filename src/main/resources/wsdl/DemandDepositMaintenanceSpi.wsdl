@@ -1,0 +1,2083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://spi.savings.deposit.app.fcr.iflex.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://spi.savings.deposit.app.fcr.iflex.com" xmlns:intf="http://spi.savings.deposit.app.fcr.iflex.com" xmlns:tns1="http://context.app.fcr.iflex.com" xmlns:tns10="http://dto.account.entity.fcr.iflex.com" xmlns:tns11="http://account.entity.fcr.iflex.com" xmlns:tns12="http://datatype.fcr.iflex.com" xmlns:tns13="http://dto.deposit.app.fcr.iflex.com" xmlns:tns14="http://dto.common.entity.fcr.iflex.com" xmlns:tns15="http://casa.account.entity.fcr.iflex.com" xmlns:tns16="http://dto.casa.account.entity.fcr.iflex.com" xmlns:tns17="http://log.udf.entity.fcr.iflex.com" xmlns:tns2="http://dto.spi.savings.deposit.app.fcr.iflex.com" xmlns:tns3="http://dto.entity.fcr.iflex.com" xmlns:tns4="http://transaction.entity.fcr.iflex.com" xmlns:tns5="http://exception.infra.fcr.iflex.com" xmlns:tns6="http://enumeration.infra.fcr.iflex.com" xmlns:tns7="http://error.validation.infra.fcr.iflex.com" xmlns:tns8="http://enumeration.fcr.iflex.com" xmlns:tns9="http://dto.savings.deposit.app.fcr.iflex.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://spi.savings.deposit.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <element name="cardlessCashDeposit">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="flagGLOrCasa" type="xsd:string"/>
+      <element name="toAccountId" type="xsd:string"/>
+      <element name="forwardedID" type="xsd:string"/>
+      <element name="terminalID" type="xsd:string"/>
+      <element name="merchantID" type="xsd:string"/>
+      <element name="transactionCurrency" type="xsd:string"/>
+      <element name="txnAmount" type="xsd:decimal"/>
+      <element name="serviceChargeAmount" type="xsd:decimal"/>
+      <element name="narrative" type="xsd:string"/>
+      <element name="uniqueReferenceNo" type="xsd:string"/>
+      <element name="transactionType" type="xsd:int"/>
+      <element name="additionalDetailsDTO" type="tns2:AdditionalDetailsDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cardlessCashDepositResponse">
+    <complexType>
+     <sequence>
+      <element name="cardlessCashDepositReturn" type="tns2:CardlessCashDepositResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns5:FatalException"/>
+   <element name="inquireAccountMasterForMaintenance">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="accountId" type="xsd:string"/>
+      <element name="maintenanceType" type="tns8:MaintenanceType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireAccountMasterForMaintenanceResponse">
+    <complexType>
+     <sequence>
+      <element name="inquireAccountMasterForMaintenanceReturn" type="tns9:AccountMasterInquiryResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cardlessCashDepositCCT">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="flagGLOrCasa" type="xsd:string"/>
+      <element name="toAccountId" type="xsd:string"/>
+      <element name="forwardedID" type="xsd:string"/>
+      <element name="terminalID" type="xsd:string"/>
+      <element name="merchantID" type="xsd:string"/>
+      <element name="transactionCurrency" type="xsd:string"/>
+      <element name="txnAmount" type="xsd:decimal"/>
+      <element name="serviceChargeAmount" type="xsd:decimal"/>
+      <element name="narrative" type="xsd:string"/>
+      <element name="uniqueReferenceNo" type="xsd:string"/>
+      <element name="transactionType" type="xsd:int"/>
+      <element name="additionalDetailsDTO" type="tns2:AdditionalDetailsDTO"/>
+      <element name="amlFieldsDTO" type="tns9:AMLFieldsDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cardlessCashDepositCCTResponse">
+    <complexType>
+     <sequence>
+      <element name="cardlessCashDepositCCTReturn" type="tns2:CardlessCashDepositResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authorize">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="accountId" type="xsd:string"/>
+      <element name="versionTicket" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authorizeResponse">
+    <complexType>
+     <sequence>
+      <element name="authorizeReturn" type="tns4:TransactionStatus"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireAccountOperatingInstruction">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="accountId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireAccountOperatingInstructionResponse">
+    <complexType>
+     <sequence>
+      <element name="inquireAccountOperatingInstructionReturn" type="tns2:AccountOperatingInstructionsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireAccountMasterFCClimitForMaintenance">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="accountId" type="xsd:string"/>
+      <element name="maintenanceType" type="tns8:MaintenanceType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireAccountMasterFCClimitForMaintenanceResponse">
+    <complexType>
+     <sequence>
+      <element name="inquireAccountMasterFCClimitForMaintenanceReturn" type="tns9:AccountMasterFCCLimitInquiryResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="amendAccountDetails">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="modifyDTOspi" type="tns2:ModifyAccountMasterMaintenanceDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="amendAccountDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="amendAccountDetailsReturn" type="tns4:TransactionStatus"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelAccountMasterMaintenance">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="accountId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelAccountMasterMaintenanceResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelAccountMasterMaintenanceReturn" type="tns4:TransactionStatus"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyAccountDetails">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="modifyDTOspi" type="tns2:ModifyAccountMasterMaintenanceDTO"/>
+      <element name="versionTicket" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyAccountDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="modifyAccountDetailsReturn" type="tns4:TransactionStatus"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://context.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="AuthorizationReason">
+    <sequence>
+     <element name="comment" nillable="true" type="xsd:string"/>
+     <element name="reasonCode" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserContext">
+    <sequence>
+     <element name="primaryPassword" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SessionContext">
+    <sequence>
+     <element name="bankCode" type="xsd:int"/>
+     <element name="channel" nillable="true" type="xsd:string"/>
+     <element name="externalBatchNumber" type="xsd:long"/>
+     <element name="externalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="externalSystemAuditTrailNumber" type="xsd:long"/>
+     <element name="localDateTimeText" nillable="true" type="xsd:string"/>
+     <element name="originalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="overridenWarnings" nillable="true" type="xsd:string"/>
+     <element name="postingDateText" nillable="true" type="xsd:string"/>
+     <element name="reason" nillable="true" type="tns1:AuthorizationReason"/>
+     <element name="serviceCode" nillable="true" type="xsd:string"/>
+     <element name="sessionTicket" nillable="true" type="xsd:string"/>
+     <element name="supervisorContext" nillable="true" type="tns1:UserContext"/>
+     <element name="transactionBranch" type="xsd:int"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="userReferenceNumber" nillable="true" type="xsd:string"/>
+     <element name="valueDateText" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.spi.savings.deposit.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="AdditionalDetailsDTO">
+    <sequence>
+     <element name="additionalDetail1" nillable="true" type="xsd:string"/>
+     <element name="additionalDetail2" nillable="true" type="xsd:string"/>
+     <element name="additionalDetail3" nillable="true" type="xsd:string"/>
+     <element name="additionalDetail4" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CardlessCashDepositResponse">
+    <complexContent>
+     <extension base="tns3:BaseResponse">
+      <sequence>
+       <element name="uniqueReferenceNo" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CorporateCustomerDetailsDTO">
+    <sequence>
+     <element name="customerAccountRelation" nillable="true" type="xsd:string"/>
+     <element name="customerFullName" nillable="true" type="xsd:string"/>
+     <element name="customerIC" nillable="true" type="xsd:string"/>
+     <element name="customerId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns3_CorporateCustomerDetailsDTO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:CorporateCustomerDetailsDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccountOperatingInstructionsResponse">
+    <complexContent>
+     <extension base="tns3:BaseResponse">
+      <sequence>
+       <element name="accountId" nillable="true" type="xsd:string"/>
+       <element name="accountOperatingInstruction" nillable="true" type="xsd:string"/>
+       <element name="corporateCustomerDetailsDTO" nillable="true" type="tns2:ArrayOf_tns3_CorporateCustomerDetailsDTO"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="MailFacilityDTO">
+    <sequence>
+     <element name="mailFacilityHoldMail" type="xsd:boolean"/>
+     <element name="mailFacilityMailControl" nillable="true" type="tns8:AdditionalMailControlType"/>
+    </sequence>
+   </complexType>
+   <complexType name="ModifyAccountMasterMaintenanceDTO">
+    <sequence>
+     <element name="accountId" nillable="true" type="xsd:string"/>
+     <element name="accountflags" nillable="true" type="tns9:AccountExtendedAttributesDTO"/>
+     <element name="chequeReorderLevel" nillable="true" type="xsd:string"/>
+     <element name="creditInterestCapBasis" nillable="true" type="xsd:string"/>
+     <element name="creditInterestCapFequency" nillable="true" type="xsd:string"/>
+     <element name="debitInterestCapBasis" nillable="true" type="xsd:string"/>
+     <element name="debitInterestCapFequency" nillable="true" type="xsd:string"/>
+     <element name="drawdownAccountId" nillable="true" type="xsd:string"/>
+     <element name="expiryDate" nillable="true" type="xsd:string"/>
+     <element name="extendedAccountMasterMaintenanceDTO" nillable="true" type="tns9:ExtendedAccountMasterMaintenanceDTO"/>
+     <element name="externalBankingFacility" nillable="true" type="tns9:ExternalBankingFacilityAttributes"/>
+     <element name="fromAccountId" nillable="true" type="xsd:string"/>
+     <element name="fundsLimit" type="xsd:double"/>
+     <element name="interestAndSCTransferAccountId" nillable="true" type="xsd:string"/>
+     <element name="isRateChangeAdvised" type="xsd:boolean"/>
+     <element name="leadDaysIntimation" type="xsd:int"/>
+     <element name="mailAddress" nillable="true" type="xsd:string"/>
+     <element name="mailFacilityDTO" nillable="true" type="tns2:MailFacilityDTO"/>
+     <element name="minimumBalanceForTrading" type="xsd:double"/>
+     <element name="minorStatus" nillable="true" type="xsd:string"/>
+     <element name="numberOfStmtCopies" type="xsd:int"/>
+     <element name="numberOfWithdrawalsAllowed" type="xsd:int"/>
+     <element name="officerName" nillable="true" type="xsd:string"/>
+     <element name="percentage" type="xsd:float"/>
+     <element name="primaryTDSCode" type="xsd:int"/>
+     <element name="secondaryTDSCode" type="xsd:int"/>
+     <element name="startDate" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://enumeration.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <simpleType name="ReplyMessageType">
+    <restriction base="xsd:string">
+     <enumeration id="ReplyMessageType.SUCCESS" value="0"/>
+     <enumeration id="ReplyMessageType.INV_ACCT_CODE" value="1"/>
+     <enumeration id="ReplyMessageType.ACCT_CLOSED_ERR" value="2"/>
+     <enumeration id="ReplyMessageType.ACCT_BLOCKED_ERR" value="3"/>
+     <enumeration id="ReplyMessageType.NODR_ONACCT" value="4"/>
+     <enumeration id="ReplyMessageType.NOCR_ONACCT" value="5"/>
+     <enumeration id="ReplyMessageType.ACCT_CLOSED_TODAY" value="6"/>
+     <enumeration id="ReplyMessageType.ACCT_DORMANT" value="7"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_ACCT" value="8"/>
+     <enumeration id="ReplyMessageType.STOP_ON_ACCOUNT" value="9"/>
+     <enumeration id="ReplyMessageType.DORMANT_CUSTOMER" value="9"/>
+     <enumeration id="ReplyMessageType.ACCT_INFO_CHANGED" value="10"/>
+     <enumeration id="ReplyMessageType.ACC_EXISTS" value="11"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_DR_ACCT" value="11"/>
+     <enumeration id="ReplyMessageType.MULT_CUST_FOUND" value="12"/>
+     <enumeration id="ReplyMessageType.ACC_INOPERATIVE" value="15"/>
+     <enumeration id="ReplyMessageType.NO_OUTSTANDING_PO" value="16"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_TOD_HOLD" value="18"/>
+     <enumeration id="ReplyMessageType.INV_PAYEE_ACCT" value="19"/>
+     <enumeration id="ReplyMessageType.INV_USER_ACCESS" value="20"/>
+     <enumeration id="ReplyMessageType.INV_TXN_CCY" value="21"/>
+     <enumeration id="ReplyMessageType.DB_ERROR" value="22"/>
+     <enumeration id="ReplyMessageType.ACCT_SUSPENDED" value="23"/>
+     <enumeration id="ReplyMessageType.DUP_BC_INSTR_LOST" value="24"/>
+     <enumeration id="ReplyMessageType.INV_DEST_BRANCH" value="25"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_DETAILS" value="26"/>
+     <enumeration id="ReplyMessageType.INSTR_CAUTION" value="27"/>
+     <enumeration id="ReplyMessageType.VAL_DT_CLG_NOT_RUN" value="28"/>
+     <enumeration id="ReplyMessageType.OLTP_INT_ERROR" value="29"/>
+     <enumeration id="ReplyMessageType.INSTR_STALE" value="30"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_TOD" value="31"/>
+     <enumeration id="ReplyMessageType.INSTR_UNCLAIMED" value="32"/>
+     <enumeration id="ReplyMessageType.REPRESENT_CHQ" value="33"/>
+     <enumeration id="ReplyMessageType.REORDER_LEVEL" value="34"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_CR_ACCT" value="35"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_AMB" value="36"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL" value="37"/>
+     <enumeration id="ReplyMessageType.TOO_MANY_WITHDRAWALS" value="38"/>
+     <enumeration id="ReplyMessageType.RD_INST_PAID" value="39"/>
+     <enumeration id="ReplyMessageType.ACCT_NT_FLG_CLS" value="40"/>
+     <enumeration id="ReplyMessageType.ACCT_BAL_NT_ZERO" value="41"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_HOLD_EXCEED" value="42"/>
+     <enumeration id="ReplyMessageType.PDC_CREDITED" value="43"/>
+     <enumeration id="ReplyMessageType.ACCT_NT_CLS" value="44"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_EXCEED" value="45"/>
+     <enumeration id="ReplyMessageType.INVALID_DATE" value="46"/>
+     <enumeration id="ReplyMessageType.NSF_RECV_TODAY" value="47"/>
+     <enumeration id="ReplyMessageType.RED_MODE_DIFFERENT" value="48"/>
+     <enumeration id="ReplyMessageType.HOLD_FUND_ON_ACCT" value="49"/>
+     <enumeration id="ReplyMessageType.NLS_DETAILS_NOT_FOUND" value="50"/>
+     <enumeration id="ReplyMessageType.PAY_MODE_NT_SAME" value="51"/>
+     <enumeration id="ReplyMessageType.FC_LINE_CODE_INV" value="52"/>
+     <enumeration id="ReplyMessageType.FC_LINE_EXCEEDED" value="53"/>
+     <enumeration id="ReplyMessageType.FC_RISK_EXCEEDED" value="54"/>
+     <enumeration id="ReplyMessageType.FC_LINK_FAILED" value="55"/>
+     <enumeration id="ReplyMessageType.ACCT_WITHOUTCARD" value="14"/>
+     <enumeration id="ReplyMessageType.FC_SYNC_ERROR" value="17"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_HOLD" value="56"/>
+     <enumeration id="ReplyMessageType.LOCKIN_TERM_VIOLATE" value="57"/>
+     <enumeration id="ReplyMessageType.INV_ACCT_STAT" value="58"/>
+     <enumeration id="ReplyMessageType.INV_ORIG_TXN" value="59"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_NO" value="60"/>
+     <enumeration id="ReplyMessageType.INSTR_LOST" value="61"/>
+     <enumeration id="ReplyMessageType.INSTR_STOPPED" value="62"/>
+     <enumeration id="ReplyMessageType.INSTR_PAID" value="63"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_STAT" value="64"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_AMT" value="65"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_ACCT" value="66"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_CCY" value="67"/>
+     <enumeration id="ReplyMessageType.INSTR_STAT_CANCELLED" value="68"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_ACCT_ST" value="69"/>
+     <enumeration id="ReplyMessageType.MEMO_INSTR_AC" value="70"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_LQD_BANK" value="71"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_BANK_CODE" value="72"/>
+     <enumeration id="ReplyMessageType.ACCT_WITHCARD" value="73"/>
+     <enumeration id="ReplyMessageType.INSTR_NOT_PAID" value="74"/>
+     <enumeration id="ReplyMessageType.INV_TO_ACCT_STAT" value="75"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_TD_ACCT" value="76"/>
+     <enumeration id="ReplyMessageType.LN_BEYOND_VALUE_DATE" value="77"/>
+     <enumeration id="ReplyMessageType.ACCT_INFO_TO_CHNG" value="78"/>
+     <enumeration id="ReplyMessageType.INV_TO_ACCT" value="79"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_LN_ACCT" value="80"/>
+     <enumeration id="ReplyMessageType.PRIM_CUST_NOT_MIN" value="81"/>
+     <enumeration id="ReplyMessageType.JOINT_ACCT_HOLDER" value="82"/>
+     <enumeration id="ReplyMessageType.MINOR_NOT_SOW" value="83"/>
+     <enumeration id="ReplyMessageType.INV_FLG_REV_CR" value="84"/>
+     <enumeration id="ReplyMessageType.INV_PROC_DATE" value="85"/>
+     <enumeration id="ReplyMessageType.ERR_INSUFF_FUNDS" value="86"/>
+     <enumeration id="ReplyMessageType.CUST_NT_SAME" value="87"/>
+     <enumeration id="ReplyMessageType.CREDIT_OVRIDE" value="88"/>
+     <enumeration id="ReplyMessageType.DEBIT_OVRIDE" value="89"/>
+     <enumeration id="ReplyMessageType.AUTO_REV_DONE" value="90"/>
+     <enumeration id="ReplyMessageType.TXN_ALREADY_SERVICED" value="91"/>
+     <enumeration id="ReplyMessageType.INSUFF_PDC_PURCH" value="92"/>
+     <enumeration id="ReplyMessageType.RECORD_NOT_FOUND" value="93"/>
+     <enumeration id="ReplyMessageType.DUP_BC_PRINT" value="94"/>
+     <enumeration id="ReplyMessageType.RECORD_PRESENT" value="95"/>
+     <enumeration id="ReplyMessageType.INSTR_REFUNDED" value="96"/>
+     <enumeration id="ReplyMessageType.ORG_TXN_SUSP" value="97"/>
+     <enumeration id="ReplyMessageType.OVER_IB_WDR_LIM" value="98"/>
+     <enumeration id="ReplyMessageType.INSUFF_SWPIN_BAL" value="99"/>
+     <enumeration id="ReplyMessageType.OVER_PER_TXN_LIM" value="100"/>
+     <enumeration id="ReplyMessageType.GRP_MIN_BAL" value="106"/>
+     <enumeration id="ReplyMessageType.AUTH_DUAL_CONTROL" value="1000"/>
+     <enumeration id="ReplyMessageType.AUTH_INTERBRANCH_LIMIT" value="1001"/>
+     <enumeration id="ReplyMessageType.AUTH_SAMEBRANCH_LIMIT" value="1002"/>
+     <enumeration id="ReplyMessageType.AUTH_INTER_BRANCH" value="1011"/>
+     <enumeration id="ReplyMessageType.LCY_CR_RESTRICTED" value="115"/>
+     <enumeration id="ReplyMessageType.AUTH_ACCT_RATE_CHANGE" value="1016"/>
+     <enumeration id="ReplyMessageType.AUTH_TXN_RATE_CHANGE" value="1017"/>
+     <enumeration id="ReplyMessageType.AUTH_PAYABLE_LIMIT" value="1022"/>
+     <enumeration id="ReplyMessageType.AUTH_SC_CHANGE" value="1023"/>
+     <enumeration id="ReplyMessageType.AUTH_FX_LIMIT" value="1042"/>
+     <enumeration id="ReplyMessageType.AUTH_LN_NO_PAYMENT_EXCEEDED" value="1018"/>
+     <enumeration id="ReplyMessageType.AUTH_LN_WAIVER" value="1019"/>
+     <enumeration id="ReplyMessageType.INST_PART_AMT_SUFF" value="1028"/>
+     <enumeration id="ReplyMessageType.MAX_LIMIT" value="586"/>
+     <enumeration id="ReplyMessageType.ACCT_OPEN_AUTH_REQD" value="116"/>
+     <enumeration id="ReplyMessageType.INDUPLUM_LIMIT_BREACHED" value="118"/>
+     <enumeration id="ReplyMessageType.INDUPLUM_ACCT_NO_DEBIT_ALLOWED" value="120"/>
+     <enumeration id="ReplyMessageType.CUST_DTLS_NOT_MAINTAINED" value="112"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="ResponseCodeType">
+    <restriction base="xsd:string">
+     <enumeration id="ResponseCodeType.MAX_LIMIT" value="586"/>
+     <enumeration id="ResponseCodeType.BATCH_ALREADY_OPEN" value="70"/>
+     <enumeration id="ResponseCodeType.BATCH_CLOSED" value="72"/>
+     <enumeration id="ResponseCodeType.BATCH_NOT_OPEN" value="74"/>
+     <enumeration id="ResponseCodeType.CH_VOID" value="85"/>
+     <enumeration id="ResponseCodeType.CIFS_VOID" value="87"/>
+     <enumeration id="ResponseCodeType.CUTOFF_IN_PROG" value="94"/>
+     <enumeration id="ResponseCodeType.DATES_NOT_IN_SYNC" value="77"/>
+     <enumeration id="ResponseCodeType.FATAL_INT_ERROR" value="99"/>
+     <enumeration id="ResponseCodeType.INT_ERROR" value="98"/>
+     <enumeration id="ResponseCodeType.INV_BATCH_STATUS" value="67"/>
+     <enumeration id="ResponseCodeType.INV_BR_CODE" value="76"/>
+     <enumeration id="ResponseCodeType.INV_MSG_FORMAT" value="95"/>
+     <enumeration id="ResponseCodeType.INV_PROC_CODE" value="96"/>
+     <enumeration id="ResponseCodeType.INV_SERVER" value="97"/>
+     <enumeration id="ResponseCodeType.INV_USER" value="79"/>
+     <enumeration id="ResponseCodeType.LN_VOID" value="89"/>
+     <enumeration id="ResponseCodeType.NO_SERVICE_AVL" value="93"/>
+     <enumeration id="ResponseCodeType.NOGLACCT" value="9"/>
+     <enumeration id="ResponseCodeType.NOT_CONFIRMED" value="75"/>
+     <enumeration id="ResponseCodeType.NOT_TEMP_CLOSED" value="73"/>
+     <enumeration id="ResponseCodeType.OL_VOID" value="90"/>
+     <enumeration id="ResponseCodeType.OVR_EXCEP_PRES_01" value="30"/>
+     <enumeration id="ResponseCodeType.OVR_EXCEP_PRES_99" value="40"/>
+     <enumeration id="ResponseCodeType.REM_LNK_FAILED" value="91"/>
+     <enumeration id="ResponseCodeType.SUCCESS" value="0"/>
+     <enumeration id="ResponseCodeType.SUCCESS_AUNCLR" value="2"/>
+     <enumeration id="ResponseCodeType.SUCCESS_CRD" value="1"/>
+     <enumeration id="ResponseCodeType.SUCCESS_OVR" value="4"/>
+     <enumeration id="ResponseCodeType.SUCCESS_SWPIN" value="3"/>
+     <enumeration id="ResponseCodeType.SUCCESS_TNKTXN" value="5"/>
+     <enumeration id="ResponseCodeType.TD_VOID" value="88"/>
+     <enumeration id="ResponseCodeType.TIMED_OUT" value="92"/>
+     <enumeration id="ResponseCodeType.TWO_BATCH" value="71"/>
+    </restriction>
+   </simpleType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exception.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="ReplyMessage">
+    <sequence>
+     <element name="code" nillable="true" type="tns6:ReplyMessageType"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns6_ReplyMessage">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:ReplyMessage"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExtendedReply">
+    <sequence>
+     <element name="messages" nillable="true" type="tns5:ArrayOf_tns6_ReplyMessage"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="FCRException">
+    <sequence>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="OLTPException">
+    <complexContent>
+     <extension base="tns5:FCRException">
+      <sequence>
+       <element name="responseCode" nillable="true" type="tns6:ResponseCodeType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="FatalException">
+    <complexContent>
+     <extension base="tns5:OLTPException">
+      <sequence>
+       <element name="reason" nillable="true" type="tns5:ReplyMessage"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://error.validation.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="ValidationError">
+    <sequence>
+     <element name="applicableAttributes" nillable="true" type="xsd:string"/>
+     <element name="attributeName" nillable="true" type="xsd:string"/>
+     <element name="attributeValue" nillable="true" type="xsd:string"/>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="methodName" nillable="true" type="xsd:string"/>
+     <element name="objectName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns8_ValidationError">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns7:ValidationError"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://transaction.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="TransactionStatus">
+    <sequence>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+     <element name="extendedReply" nillable="true" type="tns5:ExtendedReply"/>
+     <element name="externalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="inputOverridenWarnings" nillable="true" type="xsd:string"/>
+     <element name="isOverriden" type="xsd:boolean"/>
+     <element name="isServiceChargeApplied" type="xsd:boolean"/>
+     <element name="memo" nillable="true" type="xsd:string"/>
+     <element name="replyCode" type="xsd:long"/>
+     <element name="replyText" nillable="true" type="xsd:string"/>
+     <element name="spReturnValue" type="xsd:long"/>
+     <element name="transactionDateTimeText" nillable="true" type="xsd:string"/>
+     <element name="userReferenceNumber" nillable="true" type="xsd:string"/>
+     <element name="validationErrors" nillable="true" type="tns7:ArrayOf_tns8_ValidationError"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType abstract="true" name="BaseResponse">
+    <sequence>
+     <element name="status" nillable="true" type="tns4:TransactionStatus"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://enumeration.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <simpleType name="MaintenanceType">
+    <restriction base="xsd:string">
+     <enumeration id="MaintenanceType.ADDITION" value="a"/>
+     <enumeration id="MaintenanceType.MODIFICATION" value="m"/>
+     <enumeration id="MaintenanceType.DELETION" value="d"/>
+     <enumeration id="MaintenanceType.AUTHORIZE" value="z"/>
+     <enumeration id="MaintenanceType.CANCEL" value="k"/>
+     <enumeration id="MaintenanceType.AMEND" value="n"/>
+     <enumeration id="MaintenanceType.NONE" value=" "/>
+     <enumeration id="MaintenanceType.INQUIRE" value="i"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="TaskModuleType">
+    <restriction base="xsd:string">
+     <enumeration id="TaskModuleType.LOANS" value="LN"/>
+     <enumeration id="TaskModuleType.CASA" value="CH"/>
+     <enumeration id="TaskModuleType.TERM_DEPOSIT" value="TD"/>
+     <enumeration id="TaskModuleType.SECURITY" value="SM"/>
+     <enumeration id="TaskModuleType.GLOBAL" value="BA"/>
+     <enumeration id="TaskModuleType.LEDGER" value="GL"/>
+     <enumeration id="TaskModuleType.CHANNEL" value="CHNL"/>
+     <enumeration id="TaskModuleType.CHARGE" value="SC"/>
+     <enumeration id="TaskModuleType.ATM" value="AT"/>
+     <enumeration id="TaskModuleType.DOWNLOAD" value="DL"/>
+     <enumeration id="TaskModuleType.EOD" value="ED"/>
+     <enumeration id="TaskModuleType.SETTLEMENT" value="ST"/>
+     <enumeration id="TaskModuleType.SERVICE_CHARGE" value="SC"/>
+     <enumeration id="TaskModuleType.CUSTOMER_INFORMATION" value="CI"/>
+     <enumeration id="TaskModuleType.BRANCH" value="TP"/>
+     <enumeration id="TaskModuleType.APS" value="APS"/>
+     <enumeration id="TaskModuleType.INVENTORY" value="IV"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="StatusType">
+    <restriction base="xsd:string">
+     <enumeration id="StatusType.AUTHORISED" value="A"/>
+     <enumeration id="StatusType.UNAUTHORISED" value="U"/>
+     <enumeration id="StatusType.VIEWED" value="V"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="TermDepositAccountStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_CLOSED" value="1"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_MATURED" value="2"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_FORCE_RENEW" value="3"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_UNCLAIMED" value="4"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_CLO_TODAY" value="5"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_OPN_TODAY" value="6"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_DORMANT" value="7"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_OPEN" value="8"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_BLOCKED" value="9"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_SUNDRY_CR" value="10"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_NO_PAYIN" value="15"/>
+     <enumeration id="TermDepositAccountStatusType.TD_ACCT_STAT_OPEN_UNCLR" value="16"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="CurrentAndSavingsAccountStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="CurrentAndSavingsAccountStatusType.CLOSED" value="1"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.BLOCKED" value="2"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_DR" value="3"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_CR" value="4"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.CLOSED_TODAY" value="5"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.OPENED_TODAY" value="6"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.DORMANT" value="7"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.REGULAR" value="8"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.INOPERATIVE" value="9"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.BLK_DORMANT" value="10"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_DR_DORMANT" value="11"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_CR_DORMANT" value="12"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.BLK_INOP" value="13"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_DR_INOP" value="14"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.NO_CR_INOP" value="15"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.DR_OVERRIDE" value="16"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.CR_OVERRIDE" value="17"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.DR_OV_DORM" value="18"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.CR_OV_DORM" value="19"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.MATURED" value="20"/>
+     <enumeration id="CurrentAndSavingsAccountStatusType.UNCLAIMED" value="21"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="MinorAccountType">
+    <restriction base="xsd:string">
+     <enumeration id="MinorAccountType.MAJOR" value="0"/>
+     <enumeration id="MinorAccountType.MINOR_WITHOUT_RESTRICTIONS" value="1"/>
+     <enumeration id="MinorAccountType.MINOR_WITH_RESTRICTIONS" value="2"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="TermDepositPassbookStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="TermDepositPassbookStatusType.NOT_ISSUED" value="N"/>
+     <enumeration id="TermDepositPassbookStatusType.ISSUED" value="I"/>
+     <enumeration id="TermDepositPassbookStatusType.LOST" value="L"/>
+     <enumeration id="TermDepositPassbookStatusType.NONE" value="X"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="InterestFreezeType">
+    <restriction base="xsd:string">
+     <enumeration id="InterestFreezeType.PMI" value="0"/>
+     <enumeration id="InterestFreezeType.PMI_PENALTY" value="1"/>
+     <enumeration id="InterestFreezeType.PENALTY" value="2"/>
+     <enumeration id="InterestFreezeType.INTEREST" value="3"/>
+     <enumeration id="InterestFreezeType.AWARDING" value="4"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="CASAYearBaseType">
+    <restriction base="xsd:string">
+     <enumeration id="CASAYearBaseType.CALENDAR" value="1"/>
+     <enumeration id="CASAYearBaseType.ANNIVERSARY" value="0"/>
+     <enumeration id="CASAYearBaseType.None" value="2"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="CompoundingFrequencyType">
+    <restriction base="xsd:string">
+     <enumeration id="CompoundingFrequencyType.NONE_OR_AT_MATURITY" value="0"/>
+     <enumeration id="CompoundingFrequencyType.HALF_YEARLY" value="7"/>
+     <enumeration id="CompoundingFrequencyType.QUARTERLY" value="6"/>
+     <enumeration id="CompoundingFrequencyType.MONTHLY" value="4"/>
+     <enumeration id="CompoundingFrequencyType.BI_MONTHLY" value="5"/>
+     <enumeration id="CompoundingFrequencyType.YEARLY" value="8"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="BalanceStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="BalanceStatusType.OVERLINE" value="L"/>
+     <enumeration id="BalanceStatusType.NORMAL" value="N"/>
+     <enumeration id="BalanceStatusType.OVERDRAFT" value="O"/>
+     <enumeration id="BalanceStatusType.TEMPORARY_OVERDRAFT" value="T"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="MemoType">
+    <restriction base="xsd:string">
+     <enumeration id="MemoType.ACCOUNT" value="A"/>
+     <enumeration id="MemoType.BOTH" value="B"/>
+     <enumeration id="MemoType.CUSTOMER" value="C"/>
+     <enumeration id="MemoType.NONE" value="N"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="AccrualStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="AccrualStatusType.SUSPENDED" value="S"/>
+     <enumeration id="AccrualStatusType.NORMAL" value="N"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="AdditionalMailControlType">
+    <restriction base="xsd:string">
+     <enumeration id="AdditionalMailControlType.TO_ADDRESS1" value="0"/>
+     <enumeration id="AdditionalMailControlType.TO_ADDRESS2" value="1"/>
+     <enumeration id="AdditionalMailControlType.TO_BOTH_ADDRESS" value="2"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="PassbookStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="PassbookStatusType.NOT_ISSUED" value="0"/>
+     <enumeration id="PassbookStatusType.ISSUED" value="1"/>
+     <enumeration id="PassbookStatusType.LOST" value="2"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="AccountPerformanceStatusType">
+    <restriction base="xsd:string">
+     <enumeration id="AccountPerformanceStatusType.PERFOMRING" value="0"/>
+     <enumeration id="AccountPerformanceStatusType.SUBSTANDARD" value="1"/>
+     <enumeration id="AccountPerformanceStatusType.DOUBTFUL" value="2"/>
+     <enumeration id="AccountPerformanceStatusType.BAD" value="3"/>
+    </restriction>
+   </simpleType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://datatype.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="Date">
+    <sequence>
+     <element name="monthDate" type="xsd:int"/>
+     <element name="monthDateTime" type="xsd:long"/>
+     <element name="mutable" type="xsd:boolean"/>
+     <element name="time" type="xsd:long"/>
+     <element name="timestamp" nillable="true" type="xsd:dateTime"/>
+     <element name="year" type="xsd:int"/>
+     <element name="yearMonthDate" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="Period">
+    <sequence>
+     <element name="beginDate" nillable="true" type="tns12:Date"/>
+     <element name="endDate" nillable="true" type="tns12:Date"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://account.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="AccountCommonInformationDTO">
+    <sequence>
+     <element name="accountId" nillable="true" type="xsd:string"/>
+     <element name="accountTitle" nillable="true" type="xsd:string"/>
+     <element name="branchCode" type="xsd:int"/>
+     <element name="branchName" nillable="true" type="xsd:string"/>
+     <element name="branchShortName" nillable="true" type="xsd:string"/>
+     <element name="currencyCode" type="xsd:int"/>
+     <element name="currencyShortName" nillable="true" type="xsd:string"/>
+     <element name="customerId" type="xsd:long"/>
+     <element name="customerShortName" nillable="true" type="xsd:string"/>
+     <element name="isEmployeeAccount" type="xsd:boolean"/>
+     <element name="isRestricted" type="xsd:boolean"/>
+     <element name="languageCode" nillable="true" type="xsd:string"/>
+     <element name="maintenanceTicket" nillable="true" type="xsd:string"/>
+     <element name="openingDate" nillable="true" type="tns12:Date"/>
+     <element name="productCode" type="xsd:int"/>
+     <element name="productName" nillable="true" type="xsd:string"/>
+     <element name="statusType" nillable="true" type="xsd:string"/>
+     <element name="taskModule" nillable="true" type="tns8:TaskModuleType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.account.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="AbstractAccountBasedResponse">
+    <complexContent>
+     <extension base="tns3:BaseResponse">
+      <sequence>
+       <element name="accountCommonInformation" nillable="true" type="tns11:AccountCommonInformationDTO"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.common.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="MaintainableEntityDTO">
+    <sequence>
+     <element name="checker" nillable="true" type="xsd:string"/>
+     <element name="fieldReferenceNumber" nillable="true" type="xsd:string"/>
+     <element name="maintenanceCode" nillable="true" type="tns8:MaintenanceType"/>
+     <element name="maintenanceStatus" nillable="true" type="tns8:StatusType"/>
+     <element name="maintenanceTicket" nillable="true" type="xsd:string"/>
+     <element name="maker" nillable="true" type="xsd:string"/>
+     <element name="modificationDate" nillable="true" type="tns12:Date"/>
+     <element name="version" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.deposit.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="BasicInformationDTO">
+    <complexContent>
+     <extension base="tns14:MaintainableEntityDTO">
+      <sequence>
+       <element name="accountStatus" nillable="true" type="tns8:TermDepositAccountStatusType"/>
+       <element name="blocked" type="xsd:boolean"/>
+       <element name="casaAccountStatus" nillable="true" type="tns8:CurrentAndSavingsAccountStatusType"/>
+       <element name="employeeAccount" type="xsd:boolean"/>
+       <element name="internationalBankAccountNumber" nillable="true" type="xsd:string"/>
+       <element name="isMinor" type="xsd:boolean"/>
+       <element name="minorStatus" nillable="true" type="tns8:MinorAccountType"/>
+       <element name="officerName" nillable="true" type="xsd:string"/>
+       <element name="openingDate" nillable="true" type="xsd:string"/>
+       <element name="passbookStatus" nillable="true" type="tns8:TermDepositPassbookStatusType"/>
+       <element name="reasonForBlocking" type="xsd:int"/>
+       <element name="restrictedAccount" type="xsd:boolean"/>
+       <element name="serviceChargeWaived" type="xsd:boolean"/>
+       <element name="taxExemptLevel" nillable="true" type="xsd:string"/>
+       <element name="taxableCustomerCode" type="xsd:long"/>
+       <element name="taxableCustomerShortName" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://casa.account.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <complexType name="CASAServiceChargeControlAttribute">
+    <sequence>
+     <element name="isCustomerChargeWaived" type="xsd:boolean"/>
+     <element name="waiverBitmap" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="CASAControlAttribute">
+    <sequence>
+     <element name="hasStandingInstruction" type="xsd:boolean"/>
+     <element name="isAdhocStatementAllowed" type="xsd:boolean"/>
+     <element name="isConverted" type="xsd:boolean"/>
+     <element name="isDebitAuthorised" type="xsd:boolean"/>
+     <element name="isDormantInCurrentSCCycle" type="xsd:boolean"/>
+     <element name="isDrawdownAllowed" type="xsd:boolean"/>
+     <element name="isGroupBonusInterestApplicable" nillable="true" type="xsd:string"/>
+     <element name="isIDDAuthorisationRequired" type="xsd:boolean"/>
+     <element name="isInterestFrozen" nillable="true" type="tns8:InterestFreezeType"/>
+     <element name="isInterestWaived" type="xsd:boolean"/>
+     <element name="isJointOwnership" type="xsd:boolean"/>
+     <element name="isLegalStatus" type="xsd:boolean"/>
+     <element name="isPDOOverridable" type="xsd:boolean"/>
+     <element name="isReadyForClosure" type="xsd:boolean"/>
+     <element name="isRecalled" type="xsd:boolean"/>
+     <element name="isReminderEnabled" type="xsd:boolean"/>
+     <element name="isReminderRequired" type="xsd:boolean"/>
+     <element name="isSecuritized" type="xsd:boolean"/>
+     <element name="isSweepInAllowed" type="xsd:boolean"/>
+     <element name="isSweepOutAllowed" type="xsd:boolean"/>
+     <element name="isVATApplicable" type="xsd:boolean"/>
+     <element name="serviceChargeControl" nillable="true" type="tns15:CASAServiceChargeControlAttribute"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.savings.deposit.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="CASAInterestCapitalizationDTO">
+    <sequence>
+     <element name="interestCapitalizationCreditInterestCapBasis" nillable="true" type="tns8:CASAYearBaseType"/>
+     <element name="interestCapitalizationCreditInterestCapDay" type="xsd:int"/>
+     <element name="interestCapitalizationCreditInterestCapFreq" nillable="true" type="tns8:CompoundingFrequencyType"/>
+     <element name="interestCapitalizationDebitInterestCapBasis" nillable="true" type="tns8:CASAYearBaseType"/>
+     <element name="interestCapitalizationDebitInterestCapDay" type="xsd:int"/>
+     <element name="interestCapitalizationDebitInterestCapFreq" nillable="true" type="tns8:CompoundingFrequencyType"/>
+     <element name="interestCapitalizationLastCreditInterestCapBalance" type="xsd:double"/>
+     <element name="interestCapitalizationLastCreditInterestCapDate" nillable="true" type="tns12:Date"/>
+     <element name="interestCapitalizationLastDebitInterestCapBalance" type="xsd:double"/>
+     <element name="interestCapitalizationLastDebitInterestCapDate" nillable="true" type="tns12:Date"/>
+     <element name="interestCapitalizationNextCreditInterestCapDate" nillable="true" type="tns12:Date"/>
+     <element name="interestCapitalizationNextDebitInterestCapDate" nillable="true" type="tns12:Date"/>
+    </sequence>
+   </complexType>
+   <complexType name="CASAValueDTO">
+    <sequence>
+     <element name="monetaryValueAvailableBalance" type="xsd:double"/>
+     <element name="monetaryValueBookBalance" type="xsd:double"/>
+     <element name="monetaryValueCurrentAuthorizedDebitBalance" type="xsd:double"/>
+     <element name="monetaryValueHoldAmount" type="xsd:double"/>
+     <element name="monetaryValueInterestPaidYearToDate" type="xsd:double"/>
+     <element name="monetaryValueInterestReceivedYearToDate" type="xsd:double"/>
+     <element name="monetaryValueMinBalanceRequired" type="xsd:double"/>
+     <element name="monetaryValuePreviousBalanceStatus" nillable="true" type="tns8:BalanceStatusType"/>
+     <element name="monetaryValuePreviousBookBalance" type="xsd:double"/>
+     <element name="monetaryValueServiceChargePaidYearToDate" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccountControlAttributesDTO">
+    <sequence>
+     <element name="basicControlIsServiceChargeWaived" type="xsd:boolean"/>
+     <element name="basicControlMemoType" nillable="true" type="tns8:MemoType"/>
+     <element name="basicControlPassbookFlag" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccountMasterValueInquiryDTO">
+    <sequence>
+     <element name="accountClosureScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="accountMaintenanceScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="adhocStatementScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="amountPaid" type="xsd:double"/>
+     <element name="amountPaidToday" type="xsd:double"/>
+     <element name="annualEquivalentRate" nillable="true" type="xsd:string"/>
+     <element name="atmScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="averageDailyBalanceMonthToDate" type="xsd:double"/>
+     <element name="averageDailyBalanceQuarter1" type="xsd:double"/>
+     <element name="averageDailyBalanceQuarter2" type="xsd:double"/>
+     <element name="averageDailyBalanceQuarter3" type="xsd:double"/>
+     <element name="averageDailyBalanceQuarter4" type="xsd:double"/>
+     <element name="averageDailyBalanceYearToDate" type="xsd:double"/>
+     <element name="bonusPayable" type="xsd:double"/>
+     <element name="chqWithdrawScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="commitmentScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="confirmationAmount" type="xsd:double"/>
+     <element name="cumulativeCrRate" type="xsd:float"/>
+     <element name="cumulativeDrRate" type="xsd:float"/>
+     <element name="cumulativeOlRate" type="xsd:float"/>
+     <element name="cumulativeTODRate" type="xsd:float"/>
+     <element name="dormantStatusScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="interestTierDetails" nillable="true" type="tns16:ArrayOf_tns17_InterestTierDetailsDTO"/>
+     <element name="jointHolder1" nillable="true" type="xsd:string"/>
+     <element name="jointHolder1Relation" nillable="true" type="xsd:string"/>
+     <element name="jointHolder2" nillable="true" type="xsd:string"/>
+     <element name="jointHolder2Relation" nillable="true" type="xsd:string"/>
+     <element name="jointHolder3" nillable="true" type="xsd:string"/>
+     <element name="jointHolder3Relation" nillable="true" type="xsd:string"/>
+     <element name="lastOverlineDate" nillable="true" type="xsd:string"/>
+     <element name="mailScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="memoDesc1" nillable="true" type="xsd:string"/>
+     <element name="memoDesc2" nillable="true" type="xsd:string"/>
+     <element name="memoDesc3" nillable="true" type="xsd:string"/>
+     <element name="minBalanceScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="numberOfInstallments" type="xsd:long"/>
+     <element name="numberOfLateInstallments" type="xsd:long"/>
+     <element name="penaltyAmount" type="xsd:double"/>
+     <element name="previousBalanceStatusFlag" nillable="true" type="xsd:string"/>
+     <element name="productName" nillable="true" type="xsd:string"/>
+     <element name="rdAdvanceAmount" type="xsd:double"/>
+     <element name="rdFlag" nillable="true" type="xsd:string"/>
+     <element name="reasonChangeText" nillable="true" type="xsd:string"/>
+     <element name="reasonCode" type="xsd:int"/>
+     <element name="regularStatementScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="sweepInAmountAvailable" type="xsd:double"/>
+     <element name="totalDrawingPower" type="xsd:double"/>
+     <element name="transactionScWaiverFlag" nillable="true" type="xsd:string"/>
+     <element name="turnoverScWaiverFlag" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ChequeBookFacilityDTO">
+    <sequence>
+     <element name="chequeBookChequeWithdrawalsCount" type="xsd:int"/>
+     <element name="chequeBookLastIssuedChequeNo" nillable="true" type="xsd:string"/>
+     <element name="chequeBookLastUsedChequeNo" nillable="true" type="xsd:string"/>
+     <element name="chequeBookReorderLevel" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExternalBankingFacilityAttributes">
+    <sequence>
+     <element name="allowedNumberOfWithdrawals" type="xsd:int"/>
+     <element name="facilityFlags" type="xsd:long"/>
+     <element name="isATM" type="xsd:boolean"/>
+     <element name="isNetBanking" type="xsd:boolean"/>
+     <element name="isPointOfSale" type="xsd:boolean"/>
+     <element name="isTeleBanking" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="MailFacilityDTO">
+    <sequence>
+     <element name="mailFacilityHasAdditionalAddress" type="xsd:boolean"/>
+     <element name="mailFacilityHoldMail" type="xsd:boolean"/>
+     <element name="mailFacilityMailControl" nillable="true" type="tns8:AdditionalMailControlType"/>
+    </sequence>
+   </complexType>
+   <complexType name="OverdraftFacilityDTO">
+    <sequence>
+     <element name="overdraftAverageLimit" type="xsd:double"/>
+     <element name="overdraftCommitmentFeeLimit" type="xsd:double"/>
+     <element name="overdraftCurrentUsageInDays" type="xsd:int"/>
+     <element name="overdraftLastYearUsageInDays" type="xsd:int"/>
+     <element name="overdraftMonthToDateUsageInDays" type="xsd:int"/>
+     <element name="overdraftPreviousLimit" type="xsd:double"/>
+     <element name="overdraftUsageLimit" type="xsd:double"/>
+     <element name="overdraftYearToDateUsgaeInDays" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="OverlineFacilityDTO">
+    <sequence>
+     <element name="overlineCurrentUsageInDays" type="xsd:int"/>
+     <element name="overlineLastYearUsageInDays" type="xsd:int"/>
+     <element name="overlineMonthToDateUsageInDays" type="xsd:int"/>
+     <element name="overlineYearToDateOverlineCount" type="xsd:int"/>
+     <element name="overlineYearToDateUsgaeInDays" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="StatementFacilityDTO">
+    <sequence>
+     <element name="statementCopies" type="xsd:int"/>
+     <element name="statementCountYearToDate" type="xsd:int"/>
+     <element name="statementGenerationDay" type="xsd:int"/>
+     <element name="statementHasSpecialStatement" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="UnclearedFundsAdvanceFacilityDTO">
+    <sequence>
+     <element name="aufFacilityExpiryDate" nillable="true" type="tns12:Date"/>
+     <element name="aufFacilityFundsAdvanceLimit" type="xsd:double"/>
+     <element name="aufFacilityFundsAdvancePercentage" type="xsd:float"/>
+     <element name="aufFacilityStartDate" nillable="true" type="tns12:Date"/>
+     <element name="aufFacilityUnclearedFunds" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="CurrentAndSavingsAccountDTO">
+    <complexContent>
+     <extension base="tns14:MaintainableEntityDTO">
+      <sequence>
+       <element name="CASAControlAttribute" nillable="true" type="tns15:CASAControlAttribute"/>
+       <element name="CASAInterestCapitalizationDTO" nillable="true" type="tns9:CASAInterestCapitalizationDTO"/>
+       <element name="CASAValueDTO" nillable="true" type="tns9:CASAValueDTO"/>
+       <element name="accountBalanceDTO" nillable="true" type="tns16:AccountBalanceDTO"/>
+       <element name="accountClosureUserId" nillable="true" type="xsd:string"/>
+       <element name="accountControlAttributesDTO" nillable="true" type="tns9:AccountControlAttributesDTO"/>
+       <element name="accountMasterDetailsDTO" nillable="true" type="tns9:AccountMasterValueInquiryDTO"/>
+       <element name="accrualStatus" nillable="true" type="tns8:AccrualStatusType"/>
+       <element name="accruedCreditInterestAdjAmount" type="xsd:double"/>
+       <element name="accruedDebitInterestAdjAmount" type="xsd:double"/>
+       <element name="amountCreditedToday" type="xsd:double"/>
+       <element name="amountDebitedToday" type="xsd:double"/>
+       <element name="amountLastCredited" type="xsd:double"/>
+       <element name="amountLastDebited" type="xsd:double"/>
+       <element name="averageDailyBalanceProduct" type="xsd:double"/>
+       <element name="backdatedCreditInterest" type="xsd:double"/>
+       <element name="backdatedDebitInterest" type="xsd:double"/>
+       <element name="chequeBookFacilityDTO" nillable="true" type="tns9:ChequeBookFacilityDTO"/>
+       <element name="computedInterestCreditAmount" type="xsd:double"/>
+       <element name="computedInterestDebitAmount" type="xsd:double"/>
+       <element name="corporateDetailsIsReplicated" type="xsd:boolean"/>
+       <element name="creditConfirmationBalance" type="xsd:double"/>
+       <element name="creditInterestAccrued" type="xsd:double"/>
+       <element name="cummulativeTaxOnInterestAccrued" type="xsd:double"/>
+       <element name="currentAndSavingsAccountBpExpiryDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastCreditDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastDebitDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastInterestCapDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastInterestCompDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastNsfdate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastPenaltydate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountLastServiceChargeCapDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountMaturityDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountMaturityExecDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountNextRetryDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountNplDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountPassbookUpdateDate" nillable="true" type="tns12:Date"/>
+       <element name="currentAndSavingsAccountRecalledDate" nillable="true" type="tns12:Date"/>
+       <element name="customerShortName" nillable="true" type="xsd:string"/>
+       <element name="debitConfirmationBalance" type="xsd:double"/>
+       <element name="debitInterestAccrued" type="xsd:double"/>
+       <element name="drawdownRDAccountNumber" nillable="true" type="xsd:string"/>
+       <element name="externalBankingFacilityAttributes" nillable="true" type="tns9:ExternalBankingFacilityAttributes"/>
+       <element name="fromTransferredAccount" nillable="true" type="xsd:string"/>
+       <element name="graceDays" type="xsd:int"/>
+       <element name="groupAccountParentAccountId" nillable="true" type="xsd:string"/>
+       <element name="groupAccountParentAccountIdForInterest" nillable="true" type="xsd:string"/>
+       <element name="groupRole" nillable="true" type="xsd:string"/>
+       <element name="id" nillable="true" type="xsd:string"/>
+       <element name="installmentFrequency" nillable="true" type="xsd:string"/>
+       <element name="interestRateOfPartnerSavings" type="xsd:double"/>
+       <element name="interestSCTransferAccountId" nillable="true" type="xsd:string"/>
+       <element name="interestSCTransferAcctStatus" nillable="true" type="tns8:CurrentAndSavingsAccountStatusType"/>
+       <element name="interestSCTransferSinkCounter" type="xsd:int"/>
+       <element name="internationalBankAccountNo" nillable="true" type="xsd:string"/>
+       <element name="isBranchDisallowed" nillable="true" type="xsd:string"/>
+       <element name="isDebitInterestSourceChanged" type="xsd:boolean"/>
+       <element name="isEmployeeAccount" type="xsd:boolean"/>
+       <element name="isRateChangeAdvised" type="xsd:boolean"/>
+       <element name="isReplicated" type="xsd:boolean"/>
+       <element name="isRestricted" type="xsd:boolean"/>
+       <element name="isStopPayment" type="xsd:boolean"/>
+       <element name="isSwpinBalMin" type="xsd:boolean"/>
+       <element name="languageCode" nillable="true" type="xsd:string"/>
+       <element name="lastCreditInterestAccrued" type="xsd:double"/>
+       <element name="lastCreditInterestAccruedCapitalization" type="xsd:double"/>
+       <element name="lastDebitInterestAccrued" type="xsd:double"/>
+       <element name="lastDebitInterestAccruedCapitalization" type="xsd:double"/>
+       <element name="lastInterestCapitalizationBalance" type="xsd:double"/>
+       <element name="lastServiceChargeCapitalizationBalance" type="xsd:double"/>
+       <element name="lastStatementAmount" type="xsd:double"/>
+       <element name="lastStatementDate" nillable="true" type="tns12:Date"/>
+       <element name="leadDaysIntimation" type="xsd:int"/>
+       <element name="limitId" nillable="true" type="xsd:string"/>
+       <element name="mailFacilityDTO" nillable="true" type="tns9:MailFacilityDTO"/>
+       <element name="maturityAmount" type="xsd:double"/>
+       <element name="minimumBalanceForTrading" type="xsd:double"/>
+       <element name="minorStatus" nillable="true" type="tns8:MinorAccountType"/>
+       <element name="monthToDaysCredit" type="xsd:double"/>
+       <element name="monthToDaysDebit" type="xsd:double"/>
+       <element name="monthToDaysFundsCredit" type="xsd:double"/>
+       <element name="monthToDaysFundsDebited" type="xsd:double"/>
+       <element name="nomineeName" nillable="true" type="xsd:string"/>
+       <element name="numberOfCreditsMonthToDate" type="xsd:int"/>
+       <element name="numberOfCreditsToday" type="xsd:int"/>
+       <element name="numberOfDebitsMonthToDate" type="xsd:int"/>
+       <element name="numberOfDebitsToday" type="xsd:int"/>
+       <element name="officerId" nillable="true" type="xsd:string"/>
+       <element name="overdraftFacilityDTO" nillable="true" type="tns9:OverdraftFacilityDTO"/>
+       <element name="overlineFacilityDTO" nillable="true" type="tns9:OverlineFacilityDTO"/>
+       <element name="partnerSavingsInstallmentAmount" type="xsd:double"/>
+       <element name="passBookStatus" nillable="true" type="tns8:PassbookStatusType"/>
+       <element name="passbookBalance" type="xsd:double"/>
+       <element name="passbookLineNo" type="xsd:int"/>
+       <element name="pastDueChequeTotal" type="xsd:int"/>
+       <element name="penaltyRate" type="xsd:double"/>
+       <element name="performancePastDueStatus" nillable="true" type="tns8:AccountPerformanceStatusType"/>
+       <element name="periodicProductAmount" type="xsd:double"/>
+       <element name="projectedTaxOnAccruedInterest" type="xsd:double"/>
+       <element name="recurringDepositAdvanceAmount" type="xsd:double"/>
+       <element name="remainingLateInstallment" type="xsd:int"/>
+       <element name="retryCount" type="xsd:int"/>
+       <element name="sanctionedLine" type="xsd:double"/>
+       <element name="secondaryTaxAccrued" type="xsd:double"/>
+       <element name="serviceChargeControlIsCustomerChargeWaived" type="xsd:boolean"/>
+       <element name="serviceChargeControlWaiverBitmap" type="xsd:int"/>
+       <element name="serviceChargePackage" nillable="true" type="xsd:string"/>
+       <element name="statementFacilityDTO" nillable="true" type="tns9:StatementFacilityDTO"/>
+       <element name="statisticsFundsClearedToday" type="xsd:double"/>
+       <element name="statisticsMonthlyMinimumBalance" type="xsd:double"/>
+       <element name="statisticsTotalTransaction" type="xsd:int"/>
+       <element name="sweenInLienAmount" type="xsd:double"/>
+       <element name="tdsDetailsEnabled" type="xsd:boolean"/>
+       <element name="tdsDetailsPrimaryExemptionLimit" type="xsd:double"/>
+       <element name="tdsDetailsPrimaryTaxCode" type="xsd:int"/>
+       <element name="tdsDetailsSecondaryExemptionLimit" type="xsd:double"/>
+       <element name="tdsDetailsSecondaryTaxCode" type="xsd:int"/>
+       <element name="termDays" type="xsd:int"/>
+       <element name="title" nillable="true" type="xsd:string"/>
+       <element name="totalCredits" type="xsd:double"/>
+       <element name="totalDebits" type="xsd:double"/>
+       <element name="totalNSFCount" type="xsd:int"/>
+       <element name="unclearedFundsAdvanceFacilityDTO" nillable="true" type="tns9:UnclearedFundsAdvanceFacilityDTO"/>
+       <element name="useTiersForOverDraft" type="xsd:boolean"/>
+       <element name="utilizedLine" type="xsd:double"/>
+       <element name="yearToDateFundsCredited" type="xsd:double"/>
+       <element name="yearToDateFundsDebited" type="xsd:double"/>
+       <element name="yearToDateNumberOfCredits" type="xsd:int"/>
+       <element name="yearToDateNumberOfDebits" type="xsd:int"/>
+       <element name="yearTodateNSFCount" type="xsd:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AccountMasterInquiryResponse">
+    <complexContent>
+     <extension base="tns10:AbstractAccountBasedResponse">
+      <sequence>
+       <element name="basicInformationDTO" nillable="true" type="tns13:BasicInformationDTO"/>
+       <element name="currentAndSavingsAccountDTO" nillable="true" type="tns9:CurrentAndSavingsAccountDTO"/>
+       <element name="fullName" nillable="true" type="xsd:string"/>
+       <element name="period" nillable="true" type="tns12:Period"/>
+       <element name="udfFieldDetails" nillable="true" type="tns17:ArrayOf_tns18_FieldDetail"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AMLFieldsDTO">
+    <sequence>
+     <element name="custType" nillable="true" type="xsd:string"/>
+     <element name="detailsOfTransactions" nillable="true" type="xsd:string"/>
+     <element name="idPassport" nillable="true" type="xsd:string"/>
+     <element name="mobile" nillable="true" type="xsd:string"/>
+     <element name="nationality" nillable="true" type="xsd:string"/>
+     <element name="purposeOfPayment" nillable="true" type="xsd:string"/>
+     <element name="sourceOfFunds" nillable="true" type="xsd:string"/>
+     <element name="transactedBy" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccountMasterFCCLimitInquiryResponse">
+    <sequence>
+     <element name="accountMasterInquiryResponse" nillable="true" type="tns9:AccountMasterInquiryResponse"/>
+     <element name="availabilityFlag" nillable="true" type="xsd:string"/>
+     <element name="availableAmount" type="xsd:double"/>
+     <element name="ccyRestriction" nillable="true" type="xsd:string"/>
+     <element name="collateralContribution" type="xsd:double"/>
+     <element name="liabBr" nillable="true" type="xsd:string"/>
+     <element name="limitAmount" type="xsd:double"/>
+     <element name="lineExpiryDate" nillable="true" type="xsd:date"/>
+     <element name="lineStartDate" nillable="true" type="xsd:date"/>
+     <element name="mainAvailabilityFlag" nillable="true" type="xsd:string"/>
+     <element name="mainAvailableAmount" type="xsd:double"/>
+     <element name="mainCcyRestriction" nillable="true" type="xsd:string"/>
+     <element name="mainCollateralContribution" type="xsd:double"/>
+     <element name="mainLiabBr" nillable="true" type="xsd:string"/>
+     <element name="mainLimitAmount" type="xsd:double"/>
+     <element name="mainLine" nillable="true" type="xsd:string"/>
+     <element name="mainLineExpiryDate" nillable="true" type="xsd:date"/>
+     <element name="mainLineStartDate" nillable="true" type="xsd:date"/>
+     <element name="mainReportingAmount" type="xsd:double"/>
+     <element name="mainRevolvingLine" nillable="true" type="xsd:string"/>
+     <element name="mainUncollectedAmount" type="xsd:double"/>
+     <element name="mainUtilisation" type="xsd:double"/>
+     <element name="reportingAmount" type="xsd:double"/>
+     <element name="revolvingLine" nillable="true" type="xsd:string"/>
+     <element name="uncollectedAmount" type="xsd:double"/>
+     <element name="utilisation" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccountExtendedAttributesDTO">
+    <sequence>
+     <element name="isConversion" type="xsd:boolean"/>
+     <element name="isCorporateAccount" type="xsd:boolean"/>
+     <element name="isEmployeeAccount" type="xsd:boolean"/>
+     <element name="isLegal" type="xsd:boolean"/>
+     <element name="isProductTiersInDrInterestCalc" type="xsd:boolean"/>
+     <element name="isReminder" type="xsd:boolean"/>
+     <element name="isRestrictedAccount" type="xsd:boolean"/>
+     <element name="isSecuritized" type="xsd:boolean"/>
+     <element name="isTaxDeductionAtSource" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExtendedAccountMasterMaintenanceDTO">
+    <sequence>
+     <element name="acctTitle" nillable="true" type="xsd:string"/>
+     <element name="generationDay" type="xsd:int"/>
+     <element name="isExcludeCombinedStmtFlg" type="xsd:boolean"/>
+     <element name="isRegularStatementFlg" type="xsd:boolean"/>
+     <element name="nextCreditInterestCapDate" nillable="true" type="xsd:string"/>
+     <element name="nextDebitInterestCapDate" nillable="true" type="xsd:string"/>
+     <element name="overDraftParentLimitId" nillable="true" type="xsd:string"/>
+     <element name="primaryExemptionLimit" type="xsd:double"/>
+     <element name="rdInstallmentAmount" type="xsd:double"/>
+     <element name="secondaryExemptionLimit" type="xsd:double"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.casa.account.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://log.udf.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="AccountBalanceDTO">
+    <sequence>
+     <element name="accountId" nillable="true" type="xsd:string"/>
+     <element name="authorizedDebits" nillable="true" type="xsd:decimal"/>
+     <element name="availableBalance" nillable="true" type="xsd:decimal"/>
+     <element name="balanceOnHold" nillable="true" type="xsd:decimal"/>
+     <element name="confirmationAmount" nillable="true" type="xsd:decimal"/>
+     <element name="creditInterestAmount" nillable="true" type="xsd:decimal"/>
+     <element name="currentBookBalance" nillable="true" type="xsd:decimal"/>
+     <element name="customerShortName" nillable="true" type="xsd:string"/>
+     <element name="debitInterestAmount" nillable="true" type="xsd:decimal"/>
+     <element name="minimumBalanceRequired" nillable="true" type="xsd:decimal"/>
+     <element name="netBalance" nillable="true" type="xsd:decimal"/>
+     <element name="periodicAverageBalance" nillable="true" type="xsd:decimal"/>
+     <element name="previousEODBookBalance" nillable="true" type="xsd:decimal"/>
+     <element name="primaryTaxWithheld" nillable="true" type="xsd:decimal"/>
+     <element name="secondaryTaxWithheld" nillable="true" type="xsd:decimal"/>
+     <element name="serviceCharge" type="xsd:long"/>
+     <element name="sweepinAmountOnLien" nillable="true" type="xsd:decimal"/>
+     <element name="unclearFunds" nillable="true" type="xsd:decimal"/>
+     <element name="version" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="InterestTierDetailsDTO">
+    <sequence>
+     <element name="accountVariance" type="xsd:float"/>
+     <element name="balanceBreakup" nillable="true" type="xsd:decimal"/>
+     <element name="interestRate" type="xsd:float"/>
+     <element name="interestTypeDescription" nillable="true" type="xsd:string"/>
+     <element name="tierBalances" nillable="true" type="xsd:decimal"/>
+     <element name="tierNumber" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns17_InterestTierDetailsDTO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns16:InterestTierDetailsDTO"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://log.udf.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://dto.account.entity.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.common.entity.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.savings.deposit.app.fcr.iflex.com"/>
+   <import namespace="http://account.entity.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.casa.account.entity.fcr.iflex.com"/>
+   <import namespace="http://datatype.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://casa.account.entity.fcr.iflex.com"/>
+   <complexType name="FieldDetail">
+    <sequence>
+     <element name="tagName" nillable="true" type="xsd:string"/>
+     <element name="tagValue" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns18_FieldDetail">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns17:FieldDetail"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="modifyAccountDetailsRequest">
+
+      <wsdl:part element="intf:modifyAccountDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountOperatingInstructionResponse">
+
+      <wsdl:part element="intf:inquireAccountOperatingInstructionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountMasterFCClimitForMaintenanceResponse">
+
+      <wsdl:part element="intf:inquireAccountMasterFCClimitForMaintenanceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="amendAccountDetailsRequest">
+
+      <wsdl:part element="intf:amendAccountDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cardlessCashDepositResponse">
+
+      <wsdl:part element="intf:cardlessCashDepositResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelAccountMasterMaintenanceRequest">
+
+      <wsdl:part element="intf:cancelAccountMasterMaintenance" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="FatalException">
+
+      <wsdl:part element="intf:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cardlessCashDepositCCTRequest">
+
+      <wsdl:part element="intf:cardlessCashDepositCCT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cardlessCashDepositCCTResponse">
+
+      <wsdl:part element="intf:cardlessCashDepositCCTResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cardlessCashDepositRequest">
+
+      <wsdl:part element="intf:cardlessCashDeposit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountMasterForMaintenanceRequest">
+
+      <wsdl:part element="intf:inquireAccountMasterForMaintenance" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountMasterForMaintenanceResponse">
+
+      <wsdl:part element="intf:inquireAccountMasterForMaintenanceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyAccountDetailsResponse">
+
+      <wsdl:part element="intf:modifyAccountDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelAccountMasterMaintenanceResponse">
+
+      <wsdl:part element="intf:cancelAccountMasterMaintenanceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authorizeRequest">
+
+      <wsdl:part element="intf:authorize" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authorizeResponse">
+
+      <wsdl:part element="intf:authorizeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountMasterFCClimitForMaintenanceRequest">
+
+      <wsdl:part element="intf:inquireAccountMasterFCClimitForMaintenance" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="amendAccountDetailsResponse">
+
+      <wsdl:part element="intf:amendAccountDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireAccountOperatingInstructionRequest">
+
+      <wsdl:part element="intf:inquireAccountOperatingInstruction" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DemandDepositMaintenanceSpi">
+
+      <wsdl:operation name="cardlessCashDeposit">
+
+         <wsdl:input message="intf:cardlessCashDepositRequest" name="cardlessCashDepositRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:cardlessCashDepositResponse" name="cardlessCashDepositResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountMasterForMaintenance">
+
+         <wsdl:input message="intf:inquireAccountMasterForMaintenanceRequest" name="inquireAccountMasterForMaintenanceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:inquireAccountMasterForMaintenanceResponse" name="inquireAccountMasterForMaintenanceResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cardlessCashDepositCCT">
+
+         <wsdl:input message="intf:cardlessCashDepositCCTRequest" name="cardlessCashDepositCCTRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:cardlessCashDepositCCTResponse" name="cardlessCashDepositCCTResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authorize">
+
+         <wsdl:input message="intf:authorizeRequest" name="authorizeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:authorizeResponse" name="authorizeResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountOperatingInstruction">
+
+         <wsdl:input message="intf:inquireAccountOperatingInstructionRequest" name="inquireAccountOperatingInstructionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:inquireAccountOperatingInstructionResponse" name="inquireAccountOperatingInstructionResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountMasterFCClimitForMaintenance">
+
+         <wsdl:input message="intf:inquireAccountMasterFCClimitForMaintenanceRequest" name="inquireAccountMasterFCClimitForMaintenanceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:inquireAccountMasterFCClimitForMaintenanceResponse" name="inquireAccountMasterFCClimitForMaintenanceResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="amendAccountDetails">
+
+         <wsdl:input message="intf:amendAccountDetailsRequest" name="amendAccountDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:amendAccountDetailsResponse" name="amendAccountDetailsResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelAccountMasterMaintenance">
+
+         <wsdl:input message="intf:cancelAccountMasterMaintenanceRequest" name="cancelAccountMasterMaintenanceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:cancelAccountMasterMaintenanceResponse" name="cancelAccountMasterMaintenanceResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyAccountDetails">
+
+         <wsdl:input message="intf:modifyAccountDetailsRequest" name="modifyAccountDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:modifyAccountDetailsResponse" name="modifyAccountDetailsResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DemandDepositMaintenanceSpiSoapBinding" type="intf:DemandDepositMaintenanceSpi">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="cardlessCashDeposit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cardlessCashDepositRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cardlessCashDepositResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountMasterForMaintenance">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inquireAccountMasterForMaintenanceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inquireAccountMasterForMaintenanceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cardlessCashDepositCCT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cardlessCashDepositCCTRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cardlessCashDepositCCTResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authorize">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="authorizeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="authorizeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountOperatingInstruction">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inquireAccountOperatingInstructionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inquireAccountOperatingInstructionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inquireAccountMasterFCClimitForMaintenance">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inquireAccountMasterFCClimitForMaintenanceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inquireAccountMasterFCClimitForMaintenanceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="amendAccountDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="amendAccountDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="amendAccountDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelAccountMasterMaintenance">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelAccountMasterMaintenanceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelAccountMasterMaintenanceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyAccountDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyAccountDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyAccountDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DemandDepositMaintenanceSpiService">
+
+      <wsdl:port binding="intf:DemandDepositMaintenanceSpiSoapBinding" name="DemandDepositMaintenanceSpi">
+
+         <wsdlsoap:address location="https://fcrapi.uiauat.ke.intra.absaafrica/services/services/DemandDepositMaintenanceSpi"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

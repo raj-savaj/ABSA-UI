@@ -49,6 +49,10 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+		</dependency>
 
 		<!-- Apache CXF Starter -->
 		<dependency>
@@ -84,7 +88,7 @@
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>
-				<version>3.5.6</version>
+				<version>4.1.0</version>
 				<executions>
 					<execution>
 						<id>generate-sources</id>
@@ -95,8 +99,11 @@
 						<configuration>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>https://fcrapi.uiauat.ke.intra.absaafrica/services/services/DemandDepositManagerSpi?wsdl</wsdl>
+									<wsdl>src/main/resources/wsdl/DemandDepositMaintenanceSpi.wsdl</wsdl>
 									<packagenames>com.acc.soap</packagenames>
+									<extraargs>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
 								</wsdlOption>
 								<!-- Add more wsdlOption blocks as needed -->
 							</wsdlOptions>
