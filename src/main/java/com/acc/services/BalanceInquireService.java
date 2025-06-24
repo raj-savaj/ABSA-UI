@@ -34,8 +34,22 @@ public class BalanceInquireService {
 
     private BalanceInquiryResponseDTO convertToResponseDTO(AccountMasterInquiryResponse accountMasterInquiryResponse ){
         BalanceInquiryResponseDTO balanceInquiryResponseDTO = new BalanceInquiryResponseDTO();
-        balanceInquiryResponseDTO.setFullName(accountMasterInquiryResponse.getFullName());
-        balanceInquiryResponseDTO.setAvailableBalance(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getAvailableBalance());
+        balanceInquiryResponseDTO.setAccountCcy(accountMasterInquiryResponse.getAccountCommonInformation().getCurrencyShortName());
+        balanceInquiryResponseDTO.setAccountStatus(accountMasterInquiryResponse.getBasicInformationDTO().getAccountStatus());
+        balanceInquiryResponseDTO.setCustomerName(accountMasterInquiryResponse.getFullName());
+        balanceInquiryResponseDTO.setPrevdayBookBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getPreviousEODBookBalance());
+        balanceInquiryResponseDTO.setMinBalreqd(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getMinimumBalanceRequired());
+        balanceInquiryResponseDTO.setAvalBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getAvailableBalance());
+        balanceInquiryResponseDTO.setHoldBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getBalanceOnHold());
+        balanceInquiryResponseDTO.setUnclearedBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getUnclearFunds());
+        balanceInquiryResponseDTO.setCurrBookBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getCurrentBookBalance());
+        balanceInquiryResponseDTO.setDrawingPower(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountMasterDetailsDTO().getTotalDrawingPower());
+        balanceInquiryResponseDTO.setPassBookBal(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getPassbookBalance());
+        balanceInquiryResponseDTO.setNetBalanace(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getNetBalance());
+        balanceInquiryResponseDTO.setSweepInAmount(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountMasterDetailsDTO().getSweepInAmountAvailable());
+        balanceInquiryResponseDTO.setSweepInAllowed(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getCASAControlAttribute().isIsSweepInAllowed());
+        balanceInquiryResponseDTO.setConfAmount(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountBalanceDTO().getConfirmationAmount());
+        balanceInquiryResponseDTO.setAdvanceCredit(accountMasterInquiryResponse.getCurrentAndSavingsAccountDTO().getAccountMasterDetailsDTO().getRdAdvanceAmount());
         return balanceInquiryResponseDTO;
     }
 
