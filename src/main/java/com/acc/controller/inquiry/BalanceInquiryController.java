@@ -1,7 +1,6 @@
-package com.acc.controller.Inquiry;
+package com.acc.controller.inquiry;
 
 import com.acc.model.dto.balance_inquiry.BalanceInquiryRequestDTO;
-import com.acc.model.dto.balance_inquiry.BalanceInquiryResponseDTO;
 import com.acc.repository.ChAcctMastRepo;
 import com.acc.services.BalanceInquireService;
 import lombok.extern.slf4j.Slf4j;

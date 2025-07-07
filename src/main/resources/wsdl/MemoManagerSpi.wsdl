@@ -42,7 +42,7 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
    <element name="inquireAllCustomerMemoResponse">
     <complexType>
      <sequence>
-      <element name="inquireAllCustomerMemoReturn" type="tns9:CustomerMemoResponse"/>
+      <element name="inquireAllCustomerMemoReturn" type="tns9:CustomerMemoResponse" />
      </sequence>
     </complexType>
    </element>

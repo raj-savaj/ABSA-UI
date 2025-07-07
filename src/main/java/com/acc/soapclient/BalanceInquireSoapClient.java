@@ -4,10 +4,6 @@ package com.acc.soapclient;
 import com.acc.soap.*;
 import jakarta.xml.ws.BindingProvider;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.cxf.endpoint.Client;
-import org.apache.cxf.frontend.ClientProxy;
-import org.apache.cxf.transport.http.HTTPConduit;
-import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.springframework.stereotype.Service;
 
 import java.net.URL;
@@ -46,3 +42,4 @@ public class BalanceInquireSoapClient {
         }
     }
 }
+

@@ -116,6 +116,23 @@
 										<extraarg>-autoNameResolution</extraarg>
 									</extraargs>
 								</wsdlOption>
+
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/MemoManagerSpi.wsdl</wsdl>
+									<packagenames>com.acc.soap.memo</packagenames>
+									<extraargs>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/DemandDepositInstructionManagerSpi.wsdl</wsdl>
+									<packagenames>com.acc.soap</packagenames>
+									<extraargs>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+
 								<!-- Add more wsdlOption blocks as needed -->
 							</wsdlOptions>
 						</configuration>
