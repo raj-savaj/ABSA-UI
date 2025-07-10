@@ -18,7 +18,7 @@ public class CiCustMemoController {
     private MemoManagerService service;
 
     // Fetch active memos for a customer
-    @GetMapping("/{custId}")
+    @GetMapping("/getMemoDetails/{custId}")
     public ResponseEntity<List<CiCustMemo>> getActiveMemos(@PathVariable Long custId) {
         List<CiCustMemo> memos = service.getActiveMemos(custId);
         if (memos.isEmpty()) {
@@ -28,14 +28,14 @@ public class CiCustMemoController {
     }
 
     // Add a new memo
-    @PostMapping
+    @PostMapping("/addMemoDetails")
     public ResponseEntity<CiCustMemo> addMemo(@RequestBody CiCustMemo memo) {
         CiCustMemo savedMemo = service.addMemo(memo);
         return ResponseEntity.ok(savedMemo);
     }
 
     // Update an existing memo
-    @PutMapping("/{custId}/{srlNo}")
+    @PutMapping("/modifyMemoDetails/{custId}/{srlNo}")
     public ResponseEntity<String> updateMemo(
             @PathVariable Long custId,
             @PathVariable Long srlNo,
@@ -52,7 +52,7 @@ public class CiCustMemoController {
     }
 
     // Delete a memo
-    @DeleteMapping("/{custId}/{srlNo}")
+    @DeleteMapping("/deleteMemoDetails/{custId}/{srlNo}")
     public ResponseEntity<String> deleteMemo(@PathVariable Long custId, @PathVariable Long srlNo) {
         int deleted = service.deleteMemo(custId, srlNo);
         if (deleted > 0) {
