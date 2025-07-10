@@ -3,6 +3,7 @@ package com.acc.soapclient;
 import com.acc.soap.DemandDepositMaintenanceSpiService;
 import com.iflex.fcr.app.context.SessionContext;
 import com.iflex.fcr.app.deposit.savings.dto.ExtendedDemandDepositResponse;
+import com.iflex.fcr.app.deposit.savings.dto.ExtendedReferenceNoDTO;
 import com.iflex.fcr.app.deposit.savings.spi.DemandDepositManagerSpi;
 import com.iflex.fcr.app.deposit.savings.spi.DemandDepositManagerSpiService;
 import com.iflex.fcr.app.deposit.savings.spi.FatalException;
@@ -36,20 +37,19 @@ public class DemandDepositManagerSoapClient {
         }
     }
 
-    public void transferFundWithDRCRAmount(SessionContext sessionContext, String fromAccount,double fromAmount, String toAccount,double toAmount) throws FatalException {
-        String narrative = "";
-        String dealNumber = "";
-        ExtendedDemandDepositResponse extendedDemandDepositResponse = soapPort.transferFundsWithDRCRAmount(sessionContext,
+    public ExtendedDemandDepositResponse transferFundWithDRCRAmount(SessionContext sessionContext, String fromAccount,double fromAmount, String toAccount,double toAmount) throws FatalException {
+
+        return soapPort.transferFundsWithDRCRAmount(sessionContext,
                 fromAccount,
                 fromAmount,
                 toAccount,
                 toAmount,
-                narrative,
-                dealNumber,
+                "",
+                "",
                 false,
                 "200",
                 true,
-                null,
+                new ExtendedReferenceNoDTO(),
                 "N");
     }
 

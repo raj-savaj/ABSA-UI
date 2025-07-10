@@ -1,18 +1,23 @@
 package com.acc.services;
 
 import com.acc.entity.CiCustMast;
+import com.acc.entity.CiCustMemo;
 import com.acc.inf.context.SessionContextDTO;
 import com.acc.model.dto.memo.*;
 import com.acc.repository.CiCustMastRepo;
+import com.acc.repository.CiCustMemoRepository;
 import com.acc.repository.CustomerMemoRepository;
+
 import com.acc.soap.memo.CustomerMemoDTO;
 import com.acc.soap.memo.SessionContext;
 import com.acc.soapclient.MemoManagerSoapClient;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +31,9 @@ public class MemoManagerService {
 
     @Autowired
     private MemoManagerSoapClient memoManagerSoapClient;
+
+    @Autowired
+    private CiCustMemoRepository repository;
 
     public List<CustomerSearchResponseDTO> findCustomerIds(CustomerSearchRequestDTO  customerSearchRequestDTO){
         List<CiCustMast> customerIdList = null;
@@ -54,6 +62,26 @@ public class MemoManagerService {
 
     public List<Long> getMemos(CustomerMemoRequest request) {
         return customerMemoRepository.findMemoNumbersByCustomerId(request.getCustomerId());
+    }
+
+    public List<CiCustMemo> getActiveMemos(Long custId) {
+        return repository.findActiveMemosByCustId(custId);
+    }
+
+    public CiCustMemo addMemo(CiCustMemo memo) {
+        memo.setCtrUpdatSrlNo(1L);
+        memo.setDatLastMnt(new Date());
+        return repository.save(memo);
+    }
+
+    @Transactional
+    public int updateMemo(Long custId, Long srlNo, String memoText, String severity, Integer reason) {
+        return repository.updateMemo(custId, memoText, severity, reason, srlNo);
+    }
+
+    @Transactional
+    public int deleteMemo(Long custId, Long srlNo) {
+        return repository.deleteMemo(custId, srlNo);
     }
 
     public MemoDetailsResponseDTO getMemoDetails(MemoDetailsRequest request) {
