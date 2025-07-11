@@ -1,11 +1,9 @@
 package com.acc.services;
 
 import com.acc.inf.context.SessionContextDTO;
-import com.acc.model.dto.si.StandingInstructionDeleteRequestDTO;
-import com.acc.model.dto.si.StandingInstructionInquiryRequestDTO;
+import com.acc.model.dto.si.*;
 
-import com.acc.model.dto.si.StandingInstructionModifyRequestDTO;
-import com.acc.model.dto.si.StandingInstructionResponseDTO;
+import com.acc.repository.DemandDepositInstructionRepository;
 import com.acc.soap.FatalException_Exception;
 import com.acc.soap.SessionContext;
 import com.acc.soap.StandingInstructionInquirySpiReponse;
@@ -14,12 +12,13 @@ import com.acc.soapclient.DemandDepositInstructionManagerSoapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DemandDepositInstructionManagerService {
 
-    /*@Autowired
-    StandingInstructionRepository standingInstructionRepository;
-*/
+    @Autowired
+    DemandDepositInstructionRepository instructionRepository;
     @Autowired
     private DemandDepositInstructionManagerSoapClient demandDepositInstructionManagerSoapClient;
 
@@ -59,4 +58,11 @@ public class DemandDepositInstructionManagerService {
     }
 
 
+    public List<SearchInstructionDetailsResponseDTO> findCustomerInstructionByAccId(SearchInstructionDetailRequestDTO request) {
+        if ("ADD".equalsIgnoreCase(request.getMode())) {
+            return instructionRepository.findAddModeData(request.getAccountNumber());
+        } else {
+            return instructionRepository.findInstructionData(request.getAccountNumber());
+        }
+    }
 }
