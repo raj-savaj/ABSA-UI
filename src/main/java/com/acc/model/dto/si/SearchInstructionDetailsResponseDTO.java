@@ -7,7 +7,8 @@ import lombok.Setter;
 @Setter
 public class SearchInstructionDetailsResponseDTO {
     private String accountNumber;
-    private String accountTitle;
+    private String customerName;
+    private String branchCode;
     private String productCode;
     private String productName;
     private String instructionNo; // nullable for ADD mode

@@ -60,7 +60,11 @@ public class DemandDepositInstructionManagerService {
 
     public List<SearchInstructionDetailsResponseDTO> findCustomerInstructionByAccId(SearchInstructionDetailRequestDTO request) {
         if ("ADD".equalsIgnoreCase(request.getMode())) {
-            return instructionRepository.findAddModeData(request.getAccountNumber());
+            List<SearchInstructionDetailsResponseDTO> result = instructionRepository.findAddModeData(request.getAccountNumber());
+            System.out.println("Result size: " + result.size());
+            result.forEach(r -> System.out.println(r.getAccountNumber()));
+ return result;
+           // return instructionRepository.findAddModeData(request.getAccountNumber());
         } else {
             return instructionRepository.findInstructionData(request.getAccountNumber());
         }

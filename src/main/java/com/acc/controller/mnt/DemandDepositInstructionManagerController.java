@@ -23,6 +23,7 @@ public class DemandDepositInstructionManagerController
 
     @PostMapping("findCustomerInstructionByAccId")
     public List<SearchInstructionDetailsResponseDTO> findCustomerInstructionByAccId(@RequestBody SearchInstructionDetailRequestDTO requestDTO){
+        System.out.println("Calling findCustomerInstructionByAccId with accountNumber: " + requestDTO.getAccountNumber());
         return demandDepositInstructionManagerService.findCustomerInstructionByAccId(requestDTO);
     }
 
