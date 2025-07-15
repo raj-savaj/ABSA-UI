@@ -29,9 +29,6 @@ public class CustomerEntity {
     @Column(name = "cod_cc_homebrn")
     private String homeBranch;
 
-    @Column(name = "cod_cust_status")
-    private String customerStatus;
-
     @Column(name = "txt_custadr_add1")
     private String address1;
 
@@ -40,6 +37,21 @@ public class CustomerEntity {
 
     @Column(name = "txt_custadr_add3")
     private String address3;
+
+    @Column(name = "nam_custadr_city")
+    private String city;
+
+    @Column(name = "nam_custadr_state")
+    private String state;
+
+    @Column(name = "nam_custadr_cntry")
+    private String country;
+
+    @Column(name = "txt_custadr_zip")
+    private String zipCode;
+
+    @OneToOne(mappedBy = "customer")
+    private ChAcctMast account;
 
     // Getters and Setters
 }

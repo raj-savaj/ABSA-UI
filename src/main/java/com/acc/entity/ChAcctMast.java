@@ -1,9 +1,6 @@
 package com.acc.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Immutable;
@@ -23,5 +20,12 @@ public class ChAcctMast {
 
     @Column(name = "FLG_MNT_STATUS")
     private String flgMntStatus;
+
+    @Column(name = "COD_CCY")
+    private String accountCCY;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_cust")
+    private CustomerEntity customer;
 
 }
