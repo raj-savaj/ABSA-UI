@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://spi.customer.app.fcr.iflex.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://spi.customer.app.fcr.iflex.com" xmlns:intf="http://spi.customer.app.fcr.iflex.com" xmlns:tns1="http://context.app.fcr.iflex.com" xmlns:tns2="http://enumeration.fcr.iflex.com" xmlns:tns3="http://dto.spi.customer.app.fcr.iflex.com" xmlns:tns4="http://dto.entity.fcr.iflex.com" xmlns:tns5="http://transaction.entity.fcr.iflex.com" xmlns:tns6="http://exception.infra.fcr.iflex.com" xmlns:tns7="http://enumeration.infra.fcr.iflex.com" xmlns:tns8="http://error.validation.infra.fcr.iflex.com" xmlns:tns9="http://dto.customer.app.fcr.iflex.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://spi.customer.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <element name="inquireCustomerImage">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="imageType" type="tns2:ImageType"/>
+      <element name="customerId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inquireCustomerImageResponse">
+    <complexType>
+     <sequence>
+      <element name="inquireCustomerImageReturn" type="tns3:CustomerImageInquiryResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns6:FatalException"/>
+   <element name="modifyCustomerImage">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="imageType" type="tns2:ImageType"/>
+      <element name="customerId" type="xsd:long"/>
+      <element name="imageData" type="xsd:string"/>
+      <element name="versionTicket" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyCustomerImageResponse">
+    <complexType>
+     <sequence>
+      <element name="modifyCustomerImageReturn" type="tns3:TransactionResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCustomerImage">
+    <complexType>
+     <sequence>
+      <element name="sessionContext" type="tns1:SessionContext"/>
+      <element name="customerImageDTO" type="tns9:CustomerImageDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCustomerImageResponse">
+    <complexType>
+     <sequence>
+      <element name="addCustomerImageReturn" type="tns3:TransactionResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://context.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType name="AuthorizationReason">
+    <sequence>
+     <element name="comment" nillable="true" type="xsd:string"/>
+     <element name="reasonCode" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserContext">
+    <sequence>
+     <element name="primaryPassword" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SessionContext">
+    <sequence>
+     <element name="bankCode" type="xsd:int"/>
+     <element name="channel" nillable="true" type="xsd:string"/>
+     <element name="externalBatchNumber" type="xsd:long"/>
+     <element name="externalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="externalSystemAuditTrailNumber" type="xsd:long"/>
+     <element name="localDateTimeText" nillable="true" type="xsd:string"/>
+     <element name="originalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="overridenWarnings" nillable="true" type="xsd:string"/>
+     <element name="postingDateText" nillable="true" type="xsd:string"/>
+     <element name="reason" nillable="true" type="tns1:AuthorizationReason"/>
+     <element name="serviceCode" nillable="true" type="xsd:string"/>
+     <element name="sessionTicket" nillable="true" type="xsd:string"/>
+     <element name="supervisorContext" nillable="true" type="tns1:UserContext"/>
+     <element name="transactionBranch" type="xsd:int"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="userReferenceNumber" nillable="true" type="xsd:string"/>
+     <element name="valueDateText" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://enumeration.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <simpleType name="ImageType">
+    <restriction base="xsd:string">
+     <enumeration id="ImageType.PHOTO" value="2"/>
+     <enumeration id="ImageType.SIGNATURE" value="1"/>
+    </restriction>
+   </simpleType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://enumeration.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <simpleType name="ReplyMessageType">
+    <restriction base="xsd:string">
+     <enumeration id="ReplyMessageType.SUCCESS" value="0"/>
+     <enumeration id="ReplyMessageType.INV_ACCT_CODE" value="1"/>
+     <enumeration id="ReplyMessageType.ACCT_CLOSED_ERR" value="2"/>
+     <enumeration id="ReplyMessageType.ACCT_BLOCKED_ERR" value="3"/>
+     <enumeration id="ReplyMessageType.NODR_ONACCT" value="4"/>
+     <enumeration id="ReplyMessageType.NOCR_ONACCT" value="5"/>
+     <enumeration id="ReplyMessageType.ACCT_CLOSED_TODAY" value="6"/>
+     <enumeration id="ReplyMessageType.ACCT_DORMANT" value="7"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_ACCT" value="8"/>
+     <enumeration id="ReplyMessageType.STOP_ON_ACCOUNT" value="9"/>
+     <enumeration id="ReplyMessageType.DORMANT_CUSTOMER" value="9"/>
+     <enumeration id="ReplyMessageType.ACCT_INFO_CHANGED" value="10"/>
+     <enumeration id="ReplyMessageType.ACC_EXISTS" value="11"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_DR_ACCT" value="11"/>
+     <enumeration id="ReplyMessageType.MULT_CUST_FOUND" value="12"/>
+     <enumeration id="ReplyMessageType.ACC_INOPERATIVE" value="15"/>
+     <enumeration id="ReplyMessageType.NO_OUTSTANDING_PO" value="16"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_TOD_HOLD" value="18"/>
+     <enumeration id="ReplyMessageType.INV_PAYEE_ACCT" value="19"/>
+     <enumeration id="ReplyMessageType.INV_USER_ACCESS" value="20"/>
+     <enumeration id="ReplyMessageType.INV_TXN_CCY" value="21"/>
+     <enumeration id="ReplyMessageType.DB_ERROR" value="22"/>
+     <enumeration id="ReplyMessageType.ACCT_SUSPENDED" value="23"/>
+     <enumeration id="ReplyMessageType.DUP_BC_INSTR_LOST" value="24"/>
+     <enumeration id="ReplyMessageType.INV_DEST_BRANCH" value="25"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_DETAILS" value="26"/>
+     <enumeration id="ReplyMessageType.INSTR_CAUTION" value="27"/>
+     <enumeration id="ReplyMessageType.VAL_DT_CLG_NOT_RUN" value="28"/>
+     <enumeration id="ReplyMessageType.OLTP_INT_ERROR" value="29"/>
+     <enumeration id="ReplyMessageType.INSTR_STALE" value="30"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_TOD" value="31"/>
+     <enumeration id="ReplyMessageType.INSTR_UNCLAIMED" value="32"/>
+     <enumeration id="ReplyMessageType.REPRESENT_CHQ" value="33"/>
+     <enumeration id="ReplyMessageType.REORDER_LEVEL" value="34"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_CR_ACCT" value="35"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_AMB" value="36"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL" value="37"/>
+     <enumeration id="ReplyMessageType.TOO_MANY_WITHDRAWALS" value="38"/>
+     <enumeration id="ReplyMessageType.RD_INST_PAID" value="39"/>
+     <enumeration id="ReplyMessageType.ACCT_NT_FLG_CLS" value="40"/>
+     <enumeration id="ReplyMessageType.ACCT_BAL_NT_ZERO" value="41"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_HOLD_EXCEED" value="42"/>
+     <enumeration id="ReplyMessageType.PDC_CREDITED" value="43"/>
+     <enumeration id="ReplyMessageType.ACCT_NT_CLS" value="44"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_EXCEED" value="45"/>
+     <enumeration id="ReplyMessageType.INVALID_DATE" value="46"/>
+     <enumeration id="ReplyMessageType.NSF_RECV_TODAY" value="47"/>
+     <enumeration id="ReplyMessageType.RED_MODE_DIFFERENT" value="48"/>
+     <enumeration id="ReplyMessageType.HOLD_FUND_ON_ACCT" value="49"/>
+     <enumeration id="ReplyMessageType.NLS_DETAILS_NOT_FOUND" value="50"/>
+     <enumeration id="ReplyMessageType.PAY_MODE_NT_SAME" value="51"/>
+     <enumeration id="ReplyMessageType.FC_LINE_CODE_INV" value="52"/>
+     <enumeration id="ReplyMessageType.FC_LINE_EXCEEDED" value="53"/>
+     <enumeration id="ReplyMessageType.FC_RISK_EXCEEDED" value="54"/>
+     <enumeration id="ReplyMessageType.FC_LINK_FAILED" value="55"/>
+     <enumeration id="ReplyMessageType.ACCT_WITHOUTCARD" value="14"/>
+     <enumeration id="ReplyMessageType.FC_SYNC_ERROR" value="17"/>
+     <enumeration id="ReplyMessageType.INSUFF_FUNDS_OVL_HOLD" value="56"/>
+     <enumeration id="ReplyMessageType.LOCKIN_TERM_VIOLATE" value="57"/>
+     <enumeration id="ReplyMessageType.INV_ACCT_STAT" value="58"/>
+     <enumeration id="ReplyMessageType.INV_ORIG_TXN" value="59"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_NO" value="60"/>
+     <enumeration id="ReplyMessageType.INSTR_LOST" value="61"/>
+     <enumeration id="ReplyMessageType.INSTR_STOPPED" value="62"/>
+     <enumeration id="ReplyMessageType.INSTR_PAID" value="63"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_STAT" value="64"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_AMT" value="65"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_ACCT" value="66"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_CCY" value="67"/>
+     <enumeration id="ReplyMessageType.INSTR_STAT_CANCELLED" value="68"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_ACCT_ST" value="69"/>
+     <enumeration id="ReplyMessageType.MEMO_INSTR_AC" value="70"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_LQD_BANK" value="71"/>
+     <enumeration id="ReplyMessageType.INV_INSTR_BANK_CODE" value="72"/>
+     <enumeration id="ReplyMessageType.ACCT_WITHCARD" value="73"/>
+     <enumeration id="ReplyMessageType.INSTR_NOT_PAID" value="74"/>
+     <enumeration id="ReplyMessageType.INV_TO_ACCT_STAT" value="75"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_TD_ACCT" value="76"/>
+     <enumeration id="ReplyMessageType.LN_BEYOND_VALUE_DATE" value="77"/>
+     <enumeration id="ReplyMessageType.ACCT_INFO_TO_CHNG" value="78"/>
+     <enumeration id="ReplyMessageType.INV_TO_ACCT" value="79"/>
+     <enumeration id="ReplyMessageType.MEMO_ON_LN_ACCT" value="80"/>
+     <enumeration id="ReplyMessageType.PRIM_CUST_NOT_MIN" value="81"/>
+     <enumeration id="ReplyMessageType.JOINT_ACCT_HOLDER" value="82"/>
+     <enumeration id="ReplyMessageType.MINOR_NOT_SOW" value="83"/>
+     <enumeration id="ReplyMessageType.INV_FLG_REV_CR" value="84"/>
+     <enumeration id="ReplyMessageType.INV_PROC_DATE" value="85"/>
+     <enumeration id="ReplyMessageType.ERR_INSUFF_FUNDS" value="86"/>
+     <enumeration id="ReplyMessageType.CUST_NT_SAME" value="87"/>
+     <enumeration id="ReplyMessageType.CREDIT_OVRIDE" value="88"/>
+     <enumeration id="ReplyMessageType.DEBIT_OVRIDE" value="89"/>
+     <enumeration id="ReplyMessageType.AUTO_REV_DONE" value="90"/>
+     <enumeration id="ReplyMessageType.TXN_ALREADY_SERVICED" value="91"/>
+     <enumeration id="ReplyMessageType.INSUFF_PDC_PURCH" value="92"/>
+     <enumeration id="ReplyMessageType.RECORD_NOT_FOUND" value="93"/>
+     <enumeration id="ReplyMessageType.DUP_BC_PRINT" value="94"/>
+     <enumeration id="ReplyMessageType.RECORD_PRESENT" value="95"/>
+     <enumeration id="ReplyMessageType.INSTR_REFUNDED" value="96"/>
+     <enumeration id="ReplyMessageType.ORG_TXN_SUSP" value="97"/>
+     <enumeration id="ReplyMessageType.OVER_IB_WDR_LIM" value="98"/>
+     <enumeration id="ReplyMessageType.INSUFF_SWPIN_BAL" value="99"/>
+     <enumeration id="ReplyMessageType.OVER_PER_TXN_LIM" value="100"/>
+     <enumeration id="ReplyMessageType.GRP_MIN_BAL" value="106"/>
+     <enumeration id="ReplyMessageType.AUTH_DUAL_CONTROL" value="1000"/>
+     <enumeration id="ReplyMessageType.AUTH_INTERBRANCH_LIMIT" value="1001"/>
+     <enumeration id="ReplyMessageType.AUTH_SAMEBRANCH_LIMIT" value="1002"/>
+     <enumeration id="ReplyMessageType.AUTH_INTER_BRANCH" value="1011"/>
+     <enumeration id="ReplyMessageType.LCY_CR_RESTRICTED" value="115"/>
+     <enumeration id="ReplyMessageType.AUTH_ACCT_RATE_CHANGE" value="1016"/>
+     <enumeration id="ReplyMessageType.AUTH_TXN_RATE_CHANGE" value="1017"/>
+     <enumeration id="ReplyMessageType.AUTH_PAYABLE_LIMIT" value="1022"/>
+     <enumeration id="ReplyMessageType.AUTH_SC_CHANGE" value="1023"/>
+     <enumeration id="ReplyMessageType.AUTH_FX_LIMIT" value="1042"/>
+     <enumeration id="ReplyMessageType.AUTH_LN_NO_PAYMENT_EXCEEDED" value="1018"/>
+     <enumeration id="ReplyMessageType.AUTH_LN_WAIVER" value="1019"/>
+     <enumeration id="ReplyMessageType.INST_PART_AMT_SUFF" value="1028"/>
+     <enumeration id="ReplyMessageType.MAX_LIMIT" value="586"/>
+     <enumeration id="ReplyMessageType.ACCT_OPEN_AUTH_REQD" value="116"/>
+     <enumeration id="ReplyMessageType.INDUPLUM_LIMIT_BREACHED" value="118"/>
+     <enumeration id="ReplyMessageType.INDUPLUM_ACCT_NO_DEBIT_ALLOWED" value="120"/>
+     <enumeration id="ReplyMessageType.CUST_DTLS_NOT_MAINTAINED" value="112"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="ResponseCodeType">
+    <restriction base="xsd:string">
+     <enumeration id="ResponseCodeType.MAX_LIMIT" value="586"/>
+     <enumeration id="ResponseCodeType.BATCH_ALREADY_OPEN" value="70"/>
+     <enumeration id="ResponseCodeType.BATCH_CLOSED" value="72"/>
+     <enumeration id="ResponseCodeType.BATCH_NOT_OPEN" value="74"/>
+     <enumeration id="ResponseCodeType.CH_VOID" value="85"/>
+     <enumeration id="ResponseCodeType.CIFS_VOID" value="87"/>
+     <enumeration id="ResponseCodeType.CUTOFF_IN_PROG" value="94"/>
+     <enumeration id="ResponseCodeType.DATES_NOT_IN_SYNC" value="77"/>
+     <enumeration id="ResponseCodeType.FATAL_INT_ERROR" value="99"/>
+     <enumeration id="ResponseCodeType.INT_ERROR" value="98"/>
+     <enumeration id="ResponseCodeType.INV_BATCH_STATUS" value="67"/>
+     <enumeration id="ResponseCodeType.INV_BR_CODE" value="76"/>
+     <enumeration id="ResponseCodeType.INV_MSG_FORMAT" value="95"/>
+     <enumeration id="ResponseCodeType.INV_PROC_CODE" value="96"/>
+     <enumeration id="ResponseCodeType.INV_SERVER" value="97"/>
+     <enumeration id="ResponseCodeType.INV_USER" value="79"/>
+     <enumeration id="ResponseCodeType.LN_VOID" value="89"/>
+     <enumeration id="ResponseCodeType.NO_SERVICE_AVL" value="93"/>
+     <enumeration id="ResponseCodeType.NOGLACCT" value="9"/>
+     <enumeration id="ResponseCodeType.NOT_CONFIRMED" value="75"/>
+     <enumeration id="ResponseCodeType.NOT_TEMP_CLOSED" value="73"/>
+     <enumeration id="ResponseCodeType.OL_VOID" value="90"/>
+     <enumeration id="ResponseCodeType.OVR_EXCEP_PRES_01" value="30"/>
+     <enumeration id="ResponseCodeType.OVR_EXCEP_PRES_99" value="40"/>
+     <enumeration id="ResponseCodeType.REM_LNK_FAILED" value="91"/>
+     <enumeration id="ResponseCodeType.SUCCESS" value="0"/>
+     <enumeration id="ResponseCodeType.SUCCESS_AUNCLR" value="2"/>
+     <enumeration id="ResponseCodeType.SUCCESS_CRD" value="1"/>
+     <enumeration id="ResponseCodeType.SUCCESS_OVR" value="4"/>
+     <enumeration id="ResponseCodeType.SUCCESS_SWPIN" value="3"/>
+     <enumeration id="ResponseCodeType.SUCCESS_TNKTXN" value="5"/>
+     <enumeration id="ResponseCodeType.TD_VOID" value="88"/>
+     <enumeration id="ResponseCodeType.TIMED_OUT" value="92"/>
+     <enumeration id="ResponseCodeType.TWO_BATCH" value="71"/>
+    </restriction>
+   </simpleType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exception.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType name="ReplyMessage">
+    <sequence>
+     <element name="code" nillable="true" type="tns7:ReplyMessageType"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns6_ReplyMessage">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns6:ReplyMessage"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExtendedReply">
+    <sequence>
+     <element name="messages" nillable="true" type="tns6:ArrayOf_tns6_ReplyMessage"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="FCRException">
+    <sequence>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType abstract="true" name="OLTPException">
+    <complexContent>
+     <extension base="tns6:FCRException">
+      <sequence>
+       <element name="responseCode" nillable="true" type="tns7:ResponseCodeType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="FatalException">
+    <complexContent>
+     <extension base="tns6:OLTPException">
+      <sequence>
+       <element name="reason" nillable="true" type="tns6:ReplyMessage"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://error.validation.infra.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType name="ValidationError">
+    <sequence>
+     <element name="applicableAttributes" nillable="true" type="xsd:string"/>
+     <element name="attributeName" nillable="true" type="xsd:string"/>
+     <element name="attributeValue" nillable="true" type="xsd:string"/>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="methodName" nillable="true" type="xsd:string"/>
+     <element name="objectName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns8_ValidationError">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:ValidationError"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://transaction.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <complexType name="TransactionStatus">
+    <sequence>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+     <element name="extendedReply" nillable="true" type="tns6:ExtendedReply"/>
+     <element name="externalReferenceNo" nillable="true" type="xsd:string"/>
+     <element name="inputOverridenWarnings" nillable="true" type="xsd:string"/>
+     <element name="isOverriden" type="xsd:boolean"/>
+     <element name="isServiceChargeApplied" type="xsd:boolean"/>
+     <element name="memo" nillable="true" type="xsd:string"/>
+     <element name="replyCode" type="xsd:long"/>
+     <element name="replyText" nillable="true" type="xsd:string"/>
+     <element name="spReturnValue" type="xsd:long"/>
+     <element name="transactionDateTimeText" nillable="true" type="xsd:string"/>
+     <element name="userReferenceNumber" nillable="true" type="xsd:string"/>
+     <element name="validationErrors" nillable="true" type="tns8:ArrayOf_tns8_ValidationError"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.entity.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType abstract="true" name="BaseResponse">
+    <sequence>
+     <element name="status" nillable="true" type="tns5:TransactionStatus"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.spi.customer.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType name="CustomerImageInquiryResponse">
+    <complexContent>
+     <extension base="tns4:BaseResponse">
+      <sequence>
+       <element name="customerImage" nillable="true" type="xsd:string"/>
+       <element name="versionTicket" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TransactionResponse">
+    <complexContent>
+     <extension base="tns4:BaseResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.customer.app.fcr.iflex.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://enumeration.infra.fcr.iflex.com"/>
+   <import namespace="http://exception.infra.fcr.iflex.com"/>
+   <import namespace="http://dto.entity.fcr.iflex.com"/>
+   <import namespace="http://dto.spi.customer.app.fcr.iflex.com"/>
+   <import namespace="http://error.validation.infra.fcr.iflex.com"/>
+   <import namespace="http://context.app.fcr.iflex.com"/>
+   <import namespace="http://enumeration.fcr.iflex.com"/>
+   <import namespace="http://transaction.entity.fcr.iflex.com"/>
+   <complexType name="CustomerImageDTO">
+    <sequence>
+     <element name="customerID" type="xsd:long"/>
+     <element name="customerImage" nillable="true" type="xsd:string"/>
+     <element name="imageType" nillable="true" type="tns2:ImageType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="inquireCustomerImageRequest">
+
+      <wsdl:part element="intf:inquireCustomerImage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inquireCustomerImageResponse">
+
+      <wsdl:part element="intf:inquireCustomerImageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyCustomerImageResponse">
+
+      <wsdl:part element="intf:modifyCustomerImageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyCustomerImageRequest">
+
+      <wsdl:part element="intf:modifyCustomerImage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCustomerImageResponse">
+
+      <wsdl:part element="intf:addCustomerImageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="FatalException">
+
+      <wsdl:part element="intf:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCustomerImageRequest">
+
+      <wsdl:part element="intf:addCustomerImage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerImageManagerSpi">
+
+      <wsdl:operation name="inquireCustomerImage">
+
+         <wsdl:input message="intf:inquireCustomerImageRequest" name="inquireCustomerImageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:inquireCustomerImageResponse" name="inquireCustomerImageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyCustomerImage">
+
+         <wsdl:input message="intf:modifyCustomerImageRequest" name="modifyCustomerImageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:modifyCustomerImageResponse" name="modifyCustomerImageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCustomerImage">
+
+         <wsdl:input message="intf:addCustomerImageRequest" name="addCustomerImageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="intf:addCustomerImageResponse" name="addCustomerImageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="intf:FatalException" name="FatalException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerImageManagerSpiSoapBinding" type="intf:CustomerImageManagerSpi">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="inquireCustomerImage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inquireCustomerImageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inquireCustomerImageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyCustomerImage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyCustomerImageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyCustomerImageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCustomerImage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCustomerImageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCustomerImageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FatalException">
+
+            <wsdlsoap:fault name="FatalException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerImageManagerSpiService">
+
+      <wsdl:port binding="intf:CustomerImageManagerSpiSoapBinding" name="CustomerImageManagerSpi">
+
+         <wsdlsoap:address location="http://fcrapi.uiauat.ke.intra.absaafrica/services/services/CustomerImageManagerSpi"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

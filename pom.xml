@@ -133,6 +133,14 @@
 									</extraargs>
 								</wsdlOption>
 
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/CustomerImageManagerSpi.wsdl</wsdl>
+									<packagenames>com.acc.soap</packagenames>
+									<extraargs>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+								</wsdlOption>
+
 								<!-- Add more wsdlOption blocks as needed -->
 							</wsdlOptions>
 						</configuration>
