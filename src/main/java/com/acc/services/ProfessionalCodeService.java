@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -56,7 +55,7 @@ public class ProfessionalCodeService {
     }
 
     public CiProfCodeDTO updateRecord(CiProfCodeDTO dto) {
-        int updated = repo.updateProfession(dto.getTxtProfessCat(),dto.getTxtProfession(), dto.getCtrUpdatSrlno());
+        int updated = repo.updateProfession(dto.getTxtProfession(), dto.getTxtProfessCat(), dto.getCtrUpdatSrlno());
         if (updated == 0) {
             throw new RuntimeException("Update failed or stale data");
         }
@@ -73,9 +72,4 @@ public class ProfessionalCodeService {
         }
         return "Record deleted successfully";
     }
-
-    public List<CiProfCode> getAllProfessions() {
-
-            return repo.findAll();
-        }
 }
