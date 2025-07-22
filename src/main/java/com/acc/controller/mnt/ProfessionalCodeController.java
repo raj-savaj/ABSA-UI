@@ -1,10 +1,13 @@
 package com.acc.controller.mnt;
 
+import com.acc.entity.CiProfCode;
 import com.acc.model.dto.mnt.CiProfCodeDTO;
 import com.acc.services.ProfessionalCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -55,5 +58,10 @@ public class ProfessionalCodeController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping(value = "/getAll")
+    public ResponseEntity<List<CiProfCode>> getAllProfessions() {
+        return ResponseEntity.ok(codeService.getAllProfessions());
     }
 }
