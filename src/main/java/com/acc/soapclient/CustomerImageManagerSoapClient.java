@@ -2,6 +2,7 @@ package com.acc.soapclient;
 
 import com.acc.soap.*;
 import com.acc.soapclient.interceptor.NamespaceFixInterceptor;
+import jakarta.jws.WebParam;
 import jakarta.xml.ws.BindingProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.endpoint.Client;
@@ -43,6 +44,10 @@ public class CustomerImageManagerSoapClient {
 
     public TransactionResponse addCustomerImage(SessionContext sessionContext, CustomerImageDTO customerImageDTO) throws FatalException_Exception {
         return soapPort.addCustomerImage(sessionContext,customerImageDTO);
+    }
+
+    public TransactionResponse modifyCustomerImage(SessionContext sessionContext,String imageType,long customerId,String imageData,String versionTicket) throws FatalException_Exception {
+        return soapPort.modifyCustomerImage(sessionContext,imageType,customerId,imageData,versionTicket);
     }
 
 }

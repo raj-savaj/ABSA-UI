@@ -26,6 +26,10 @@ public class CustomerImageService {
         return soapClient.addCustomerImage(convertSessionContentToSoap(customerImageRequestDTO.getSessionContext()),customerImageDTO);
     }
 
+    public TransactionResponse modifyCustomerImage(CustomerImageRequestDTO customerImageRequestDTO) throws FatalException_Exception {
+        return soapClient.modifyCustomerImage(convertSessionContentToSoap(customerImageRequestDTO.getSessionContext()),customerImageRequestDTO.getImageType(),customerImageRequestDTO.getCustomerId(),customerImageRequestDTO.getCustomerImage(),customerImageRequestDTO.getVersionTicket());
+    }
+
     private SessionContext convertSessionContentToSoap(SessionContextDTO sessionContextDTO){
         SessionContext sessionContext = new SessionContext();
         sessionContext.setBankCode(sessionContextDTO.getBankCode());

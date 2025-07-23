@@ -36,4 +36,15 @@ public class CustomerImageController {
             throw new RuntimeException(e);
         }
     }
+
+    @PostMapping("modifyCustomerImage")
+    public TransactionResponse modifyCustomerImage(@RequestBody CustomerImageRequestDTO request){
+        try {
+            return service.modifyCustomerImage(request);
+        } catch (FatalException_Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

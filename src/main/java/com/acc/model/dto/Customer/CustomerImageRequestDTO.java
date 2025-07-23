@@ -11,4 +11,5 @@ public class CustomerImageRequestDTO {
     private Long customerId;
     private String imageType;
     private String customerImage;
+    private String versionTicket;
 }
