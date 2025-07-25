@@ -2,9 +2,9 @@ package com.acc.controller.mnt;
 
 import com.acc.model.dto.Customer.CustomerImageRequestDTO;
 import com.acc.services.CustomerImageService;
-import com.acc.soap.CustomerImageInquiryResponse;
-import com.acc.soap.FatalException_Exception;
-import com.acc.soap.TransactionResponse;
+import com.acc.soap.customer.image.CustomerImageInquiryResponse;
+import com.acc.soap.customer.image.FatalException_Exception;
+import com.acc.soap.customer.image.TransactionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
