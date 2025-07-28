@@ -7,6 +7,7 @@ import com.acc.soap.customer.image.FatalException_Exception;
 import com.acc.soap.customer.image.TransactionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,29 +21,29 @@ public class CustomerImageController {
     private CustomerImageService service;
 
     @PostMapping("customerImageInquiry")
-    public CustomerImageInquiryResponse findCustomerImage(@RequestBody CustomerImageRequestDTO request){
+    public ResponseEntity<?> findCustomerImage(@RequestBody CustomerImageRequestDTO request){
         try {
-            return service.getCustomerImageRequest(request);
+            return ResponseEntity.ok().body(service.getCustomerImageRequest(request));
         } catch (FatalException_Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.ok().body(e.getFaultInfo());
         }
     }
 
     @PostMapping("addCustomerImage")
-    public TransactionResponse addCustomerImage(@RequestBody CustomerImageRequestDTO request){
+    public ResponseEntity<?> addCustomerImage(@RequestBody CustomerImageRequestDTO request){
         try {
-            return service.addCustomerImage(request);
+            return ResponseEntity.ok().body(service.addCustomerImage(request));
         } catch (FatalException_Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.ok().body(e.getFaultInfo());
         }
     }
 
     @PostMapping("modifyCustomerImage")
-    public TransactionResponse modifyCustomerImage(@RequestBody CustomerImageRequestDTO request){
+    public ResponseEntity<?> modifyCustomerImage(@RequestBody CustomerImageRequestDTO request){
         try {
-            return service.modifyCustomerImage(request);
+            return ResponseEntity.ok().body(service.modifyCustomerImage(request));
         } catch (FatalException_Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.ok().body(e.getFaultInfo());
         }
     }
 
