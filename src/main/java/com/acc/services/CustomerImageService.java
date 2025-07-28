@@ -3,7 +3,7 @@ package com.acc.services;
 
 import com.acc.inf.context.SessionContextDTO;
 import com.acc.model.dto.Customer.CustomerImageRequestDTO;
-import com.acc.soap.*;
+import com.acc.soap.customer.image.*;
 import com.acc.soapclient.CustomerImageManagerSoapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -135,7 +135,7 @@
 
 								<wsdlOption>
 									<wsdl>src/main/resources/wsdl/CustomerImageManagerSpi.wsdl</wsdl>
-									<packagenames>com.acc.soap</packagenames>
+									<packagenames>com.acc.soap.customer.image</packagenames>
 									<extraargs>
 										<extraarg>-autoNameResolution</extraarg>
 									</extraargs>

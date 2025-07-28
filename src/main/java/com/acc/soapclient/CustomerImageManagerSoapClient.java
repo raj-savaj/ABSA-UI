@@ -1,6 +1,6 @@
 package com.acc.soapclient;
 
-import com.acc.soap.*;
+import com.acc.soap.customer.image.*;
 import com.acc.soapclient.interceptor.NamespaceFixInterceptor;
 import jakarta.jws.WebParam;
 import jakarta.xml.ws.BindingProvider;
