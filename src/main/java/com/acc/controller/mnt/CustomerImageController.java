@@ -1,24 +1,33 @@
 package com.acc.controller.mnt;
 
 import com.acc.model.dto.Customer.CustomerImageRequestDTO;
+import com.acc.repository.CustomerImageRepository;
 import com.acc.services.CustomerImageService;
 import com.acc.soap.customer.image.CustomerImageInquiryResponse;
 import com.acc.soap.customer.image.FatalException_Exception;
 import com.acc.soap.customer.image.TransactionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 @Slf4j
 public class CustomerImageController {
+
     @Autowired
     private CustomerImageService service;
+
+    @Autowired
+    private CustomerImageRepository imageRepository;
 
     @PostMapping("customerImageInquiry")
     public ResponseEntity<?> findCustomerImage(@RequestBody CustomerImageRequestDTO request){
@@ -32,9 +41,21 @@ public class CustomerImageController {
     @PostMapping("addCustomerImage")
     public ResponseEntity<?> addCustomerImage(@RequestBody CustomerImageRequestDTO request){
         try {
-            return ResponseEntity.ok().body(service.addCustomerImage(request));
+            int existingCount = imageRepository.countByCustomerId(request.getCustomerId());
+
+            if (existingCount > 0) {
+                Map<String, String> errorResponse = new HashMap<>();
+                errorResponse.put("message", "Record Already Exists!");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse); // Use 409 Conflict for existing record
+            }
+
+            TransactionResponse response = service.addCustomerImage(request);
+            return ResponseEntity.ok(response);
+
         } catch (FatalException_Exception e) {
-            return ResponseEntity.ok().body(e.getFaultInfo());
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 
