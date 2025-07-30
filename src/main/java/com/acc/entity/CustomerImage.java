@@ -23,4 +23,7 @@ public class CustomerImage {
 
     @Column(name = "cod_image_type")
     private String imageType;
+
+    @Column(name = "ctr_updat_srlno")
+    private Long updatedSrlNo;
 }

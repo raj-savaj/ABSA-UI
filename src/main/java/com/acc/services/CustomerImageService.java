@@ -3,16 +3,22 @@ package com.acc.services;
 
 import com.acc.inf.context.SessionContextDTO;
 import com.acc.model.dto.Customer.CustomerImageRequestDTO;
+import com.acc.repository.CustomerImageRepository;
 import com.acc.soap.customer.image.*;
 import com.acc.soapclient.CustomerImageManagerSoapClient;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CustomerImageService {
 
     @Autowired
     private CustomerImageManagerSoapClient soapClient;
+
+    @Autowired
+    private CustomerImageRepository imageRepository;
 
     public CustomerImageInquiryResponse getCustomerImageRequest(CustomerImageRequestDTO customerImageRequestDTO) throws FatalException_Exception {
         return soapClient.getCustomerImage(convertSessionContentToSoap(customerImageRequestDTO.getSessionContext()), customerImageRequestDTO.getImageType(), customerImageRequestDTO.getCustomerId());
@@ -38,5 +44,9 @@ public class CustomerImageService {
         sessionContext.setUserId(sessionContextDTO.getUserId());
         return sessionContext;
     }
-
+        public boolean deleteCustomerImage(String customerId) {
+            int deletedCount = imageRepository.deleteActiveImageByCustomerIdAndSerialNo(customerId);
+            log.info("Deleted rows: {}", deletedCount);
+            return deletedCount > 0;
+        }
 }
