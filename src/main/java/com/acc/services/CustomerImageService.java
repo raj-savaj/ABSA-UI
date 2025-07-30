@@ -44,8 +44,8 @@ public class CustomerImageService {
         sessionContext.setUserId(sessionContextDTO.getUserId());
         return sessionContext;
     }
-        public boolean deleteCustomerImage(String customerId) {
-            int deletedCount = imageRepository.deleteActiveImageByCustomerIdAndSerialNo(customerId);
+        public boolean deleteCustomerImage(String customerId,Long imageType) {
+            int deletedCount = imageRepository.deleteActiveImageByCustomerIdAndSerialNo(customerId,imageType);
             log.info("Deleted rows: {}", deletedCount);
             return deletedCount > 0;
         }

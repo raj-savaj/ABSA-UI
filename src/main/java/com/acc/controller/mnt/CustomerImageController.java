@@ -66,9 +66,9 @@ public class CustomerImageController {
     }
 
     @DeleteMapping("deleteCustomerImage")
-    public ResponseEntity<?> deleteCustomerImage(@RequestParam String customerId) {
+    public ResponseEntity<?> deleteCustomerImage(@RequestParam String customerId, @RequestParam Long imageType) {
         try {
-            boolean deleted = service.deleteCustomerImage(customerId);
+            boolean deleted = service.deleteCustomerImage(customerId,imageType);
             if (deleted) {
                 return ResponseEntity.ok().body(Map.of("message", "Record deleted successfully"));
             } else {
