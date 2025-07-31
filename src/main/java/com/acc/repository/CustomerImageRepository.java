@@ -19,7 +19,8 @@ public interface CustomerImageRepository extends JpaRepository<CustomerImage, Lo
     @Modifying
     @Query(value = "DELETE FROM CS_HO_CUST_IMAGEMAST " +
                 "WHERE cod_cust_id = :customerId " +
+                "AND cod_image_type = :imageType " +
                 "AND flg_mnt_status = 'A'", nativeQuery = true)
-        int deleteActiveImageByCustomerIdAndSerialNo(@Param("customerId") String customerId);
+        int deleteActiveImageByCustomerIdAndSerialNo(@Param("customerId") String customerId,@Param("imageType") Long imageType);
 
 }
