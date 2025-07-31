@@ -3,19 +3,20 @@ package com.acc.model.dto.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 public class CustomerDetailResponse {
 
-    private String customerId;
+    private Integer customerId;
+
     private String occupation;
-    private String occupationCategory;
+    private Integer occupationCategory;
     private String designation;
-    private String tenure;
+    private Integer tenure;
     private String employerName;
+
     private String empAddr1;
     private String empAddr2;
     private String empAddr3;
@@ -23,11 +24,14 @@ public class CustomerDetailResponse {
     private String empState;
     private String empCountry;
     private String empZip;
+
     private String empPhone;
     private String empTelex;
     private String empFax;
+
     private Integer yearsInJob;
     private Integer retirementAge;
+
     private String creditRating;
     private LocalDate creditRatingDate;
 
@@ -41,23 +45,31 @@ public class CustomerDetailResponse {
     private String previousEmployer;
     private String previousJobDesignation;
     private String reasonForLeaving;
-    private BigDecimal lastSalary;
+    private Double lastSalary;
+
     private String legalCaseFlag;
     private String legalCaseText;
     private String policeRecord;
 
     private String spouseName;
     private String spouseNationalId;
-    private String spouseOccupation;
+    private Integer spouseOccupation;
     private String spouseDesignation;
     private LocalDate spouseDob;
     private LocalDate marriageDate;
+
     private String spouseEmployer;
     private String spouseEmpAddr1;
     private String spouseEmpAddr2;
     private String spouseEmpAddr3;
     private String spouseEmpPhone;
 
+    /*private String maintenanceFlag;
+    private String maintenanceAction;
+    private String makerId;
+    private String checkerId;
+    private LocalDate lastModified;
+    private Integer updateSerialNo;*/
+
     // Getters and Setters
-    // (Optional: use Lombok @Data or @Getter/@Setter to avoid writing boilerplate)
 }

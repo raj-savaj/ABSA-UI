@@ -3,18 +3,18 @@ package com.acc.model.dto.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 public class CustomerDetailRequest {
 
-    private String customerId;
+    private Integer customerId;
+
     private String occupation;
-    private String occupationCategory;
+    private Integer occupationCategory;
     private String designation;
-    private String tenure;
+    private Integer tenure;
     private String employerName;
 
     private String empAddr1;
@@ -45,7 +45,7 @@ public class CustomerDetailRequest {
     private String previousEmployer;
     private String previousJobDesignation;
     private String reasonForLeaving;
-    private BigDecimal lastSalary;
+    private Double lastSalary;
 
     private String legalCaseFlag;
     private String legalCaseText;
@@ -53,7 +53,7 @@ public class CustomerDetailRequest {
 
     private String spouseName;
     private String spouseNationalId;
-    private String spouseOccupation;
+    private Integer spouseOccupation;
     private String spouseDesignation;
     private LocalDate spouseDob;
     private LocalDate marriageDate;
@@ -63,6 +63,13 @@ public class CustomerDetailRequest {
     private String spouseEmpAddr2;
     private String spouseEmpAddr3;
     private String spouseEmpPhone;
+
+    /*private String maintenanceFlag;
+    private String maintenanceAction;
+    private String makerId;
+    private String checkerId;
+    private LocalDate lastModified;
+    private Integer updateSerialNo;*/
 
     // Getters and Setters
 }

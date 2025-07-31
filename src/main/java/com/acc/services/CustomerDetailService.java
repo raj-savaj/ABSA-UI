@@ -5,11 +5,8 @@ import com.acc.model.dto.Customer.CustomerDetailRequest;
 import com.acc.model.dto.Customer.CustomerDetailResponse;
 import com.acc.repository.CustomerDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -19,7 +16,7 @@ public class CustomerDetailService {
     private CustomerDetailRepository repository;
 
     // GET API
-    public CustomerDetailResponse getCustomerById(String customerId) {
+    public CustomerDetailResponse getCustomerById(Integer customerId) {
         Optional<CustomerDetail> optionalCustomer = repository.findByCustomerIdAndMaintenanceFlag(customerId, "A");
 
         if (optionalCustomer.isPresent()) {
@@ -35,14 +32,19 @@ public class CustomerDetailService {
     }
 
     // ADD API
-    public CustomerDetailResponse addCustomer(CustomerDetailRequest request) {
+    public boolean addCustomer(CustomerDetailRequest request) {
+
+        // Check if customer ID already exists with active status
+        Optional<CustomerDetail> existing = repository.findByCustomerIdAndMaintenanceFlag(request.getCustomerId(), "A");
+
+        if (existing.isPresent()) {
+            return false;
+        }
+
         CustomerDetail entity = mapToEntity(request);
         entity.setMaintenanceFlag("A");
-        entity.setCreditRatingDate(LocalDate.now());
-        entity.setRetirementAge(60); // example default value
-
         CustomerDetail saved = repository.save(entity);
-        return mapToResponse(saved);
+        return true;
     }
 
     // Converts Entity to DTO

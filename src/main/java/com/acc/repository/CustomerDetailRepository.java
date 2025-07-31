@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface CustomerDetailRepository extends JpaRepository<CustomerDetail, String> {
 
-    Optional<CustomerDetail> findByCustomerIdAndMaintenanceFlag(String customerId, String mntFlag);
+    Optional<CustomerDetail> findByCustomerIdAndMaintenanceFlag(Integer customerId, String mntFlag);
 
 }

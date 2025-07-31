@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Immutable;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -17,19 +16,19 @@ public class CustomerDetail {
 
         @Id
         @Column(name = "COD_CUST_ID")
-        private String customerId;
+        private Integer customerId;
 
         @Column(name = "TXT_CUST_OCCUPTN")
         private String occupation;
 
         @Column(name = "TXT_OCCUPTN_CAT")
-        private String occupationCategory;
+        private Integer occupationCategory;
 
         @Column(name = "TXT_DESIGNATION")
         private String designation;
 
         @Column(name = "TXT_TENR_OCCUPTN")
-        private String tenure;
+        private Integer tenure;
 
         @Column(name = "NAM_CUST_EMP")
         private String employerName;
@@ -104,7 +103,7 @@ public class CustomerDetail {
         private String reasonForLeaving;
 
         @Column(name = "AMT_LAST_SAL")
-        private BigDecimal lastSalary;
+        private Double lastSalary;
 
         @Column(name = "FLG_LGL_CASE")
         private String legalCaseFlag;
@@ -122,7 +121,7 @@ public class CustomerDetail {
         private String spouseNationalId;
 
         @Column(name = "TXT_OCCPN_SPOUSE")
-        private String spouseOccupation;
+        private Integer spouseOccupation;
 
         @Column(name = "TXT_SPO_DESGN")
         private String spouseDesignation;
