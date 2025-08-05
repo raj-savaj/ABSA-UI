@@ -7,6 +7,7 @@ import com.acc.repository.CustomerDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -19,22 +20,11 @@ public class CustomerDetailService {
     public CustomerDetailResponse getCustomerById(Integer customerId) {
         Optional<CustomerDetail> optionalCustomer = repository.findByCustomerIdAndMaintenanceFlag(customerId, "A");
 
-        if (optionalCustomer.isPresent()) {
-            CustomerDetail entity = optionalCustomer.get();
-            return mapToResponse(entity);
-        } else {
-            // Option 1: Throw meaningful exception
-            //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found with ID: " + customerId);
-
-            // Option 2: Return null or custom empty response (not recommended)
-             return null;
-        }
+        return optionalCustomer.map(this::mapToResponse).orElse(null);
     }
 
     // ADD API
     public boolean addCustomer(CustomerDetailRequest request) {
-
-        // Check if customer ID already exists with active status
         Optional<CustomerDetail> existing = repository.findByCustomerIdAndMaintenanceFlag(request.getCustomerId(), "A");
 
         if (existing.isPresent()) {
@@ -43,8 +33,51 @@ public class CustomerDetailService {
 
         CustomerDetail entity = mapToEntity(request);
         entity.setMaintenanceFlag("A");
-        CustomerDetail saved = repository.save(entity);
+        entity.setMaintenanceAction("A");
+        entity.setLastModified(LocalDate.now());
+        entity.setUpdateSerialNo(1);
+        repository.save(entity);
         return true;
+    }
+
+    // UPDATE API
+    public boolean updateCustomer(CustomerDetailRequest request) {
+        Optional<CustomerDetail> existingOpt = repository.findByCustomerIdAndMaintenanceFlag(request.getCustomerId(), "A");
+
+        if (existingOpt.isPresent()) {
+            CustomerDetail entity = mapToEntity(request);
+            entity.setMaintenanceFlag("A");
+            entity.setMaintenanceAction("U");
+            entity.setLastModified(LocalDate.now());
+
+            // Get latest serial no and increment
+            int updateNo = existingOpt.get().getUpdateSerialNo() != null
+                    ? existingOpt.get().getUpdateSerialNo() + 1
+                    : 1;
+            entity.setUpdateSerialNo(updateNo);
+
+            repository.save(entity);
+            return true;
+        }
+
+        return false;
+    }
+
+    // DELETE API (Soft Delete)
+    public boolean deleteCustomer(Integer customerId) {
+        Optional<CustomerDetail> existingOpt = repository.findByCustomerIdAndMaintenanceFlag(customerId, "A");
+
+        if (existingOpt.isPresent()) {
+            CustomerDetail entity = existingOpt.get();
+            entity.setMaintenanceFlag("D");
+            entity.setMaintenanceAction("D");
+            entity.setLastModified(LocalDate.now());
+
+            repository.save(entity);
+            return true;
+        }
+
+        return false;
     }
 
     // Converts Entity to DTO
@@ -117,7 +150,9 @@ public class CustomerDetailService {
         entity.setEmpTelex(dto.getEmpTelex());
         entity.setEmpFax(dto.getEmpFax());
         entity.setYearsInJob(dto.getYearsInJob());
+        entity.setRetirementAge(dto.getRetirementAge());
         entity.setCreditRating(dto.getCreditRating());
+        entity.setCreditRatingDate(dto.getCreditRatingDate());
         entity.setCreditCard1Name(dto.getCreditCard1Name());
         entity.setCreditCard1Ref(dto.getCreditCard1Ref());
         entity.setCreditCard2Name(dto.getCreditCard2Name());
@@ -145,4 +180,3 @@ public class CustomerDetailService {
         return entity;
     }
 }
-

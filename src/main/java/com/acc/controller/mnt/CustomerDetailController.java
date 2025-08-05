@@ -47,4 +47,37 @@ public class CustomerDetailController {
         response.put("message", "Customer " + request.getCustomerId() + " added successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @PutMapping("updateCustomer")
+    public ResponseEntity<Map<String, String>> updateCustomer(@RequestBody CustomerDetailRequest request) {
+        boolean updated = service.updateCustomer(request);
+        Map<String, String> response = new HashMap<>();
+
+        if (updated) {
+            response.put("code", "200");
+            response.put("message", "Customer updated successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("code", "404");
+            response.put("message", "Customer not found or inactive");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
+
+    @DeleteMapping("deleteCustomer/{id}")
+    public ResponseEntity<Map<String, String>> deleteCustomer(@PathVariable("id") Integer customerId) {
+        boolean deleted = service.deleteCustomer(customerId);
+        Map<String, String> response = new HashMap<>();
+
+        if (deleted) {
+            response.put("code", "200");
+            response.put("message", "Customer deleted successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("code", "404");
+            response.put("message", "Customer not found or already deleted");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
+
 }
